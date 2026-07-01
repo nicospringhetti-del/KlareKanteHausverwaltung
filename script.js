@@ -77,7 +77,7 @@
 
      >>> EMPFÄNGER-ADRESSE hier eintragen: <<<
   */
-  var EMPFAENGER = "info@klarekante-hausverwaltung.de"; // TODO: echte Adresse eintragen
+  var EMPFAENGER = "info@klarekante-hausverwaltung.de";
 
   var form = document.getElementById("kontaktformular");
   var note = document.getElementById("form-note");

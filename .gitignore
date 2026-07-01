@@ -8,3 +8,6 @@
 # Playwright / temporäre Screenshots
 .playwright-mcp/
 *.log
+
+# Lokales Vorschau-Skript
+serve.ps1
