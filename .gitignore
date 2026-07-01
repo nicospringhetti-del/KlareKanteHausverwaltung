@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Playwright / temporäre Screenshots
+.playwright-mcp/
+*.log
