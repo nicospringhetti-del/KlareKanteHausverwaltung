@@ -1,6 +1,6 @@
-# KlareKante Hausverwaltung – Website
+# Klare Kante Hausverwaltung – Website
 
-Statische One-Page-Website für die WEG-Verwaltung **KlareKante Hausverwaltung**.
+Statische One-Page-Website für die WEG-Verwaltung **Klare Kante Hausverwaltung**.
 Kein Build-Schritt, keine Datenbank – nur HTML, CSS und ein bisschen JavaScript.
 
 ---
