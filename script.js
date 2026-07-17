@@ -71,16 +71,11 @@
   }
 
   /* ---------- Kontaktformular ----------
-     Statische Seiten können selbst keine E-Mails versenden.
-     Standard: Das Formular öffnet das E-Mail-Programm des Besuchers (mailto).
-     Für serverseitigen Versand ohne mailto siehe README.md (Formspree o. Ä.).
-
-     >>> EMPFÄNGER-ADRESSE hier eintragen: <<<
+     Versand über Web3Forms (api.web3forms.com) – kein eigener Server nötig.
   */
-  var EMPFAENGER = "info@klarekante-hausverwaltung.de";
-
   var form = document.getElementById("kontaktformular");
   var note = document.getElementById("form-note");
+  var submitBtn = form ? form.querySelector("button[type=submit]") : null;
 
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -88,7 +83,6 @@
 
       var name = form.name.value.trim();
       var email = form.email.value.trim();
-      var betreff = form.betreff.value.trim() || "Anfrage über die Website";
       var nachricht = form.nachricht.value.trim();
 
       // einfache Validierung
@@ -101,19 +95,28 @@
         return;
       }
 
-      // mailto zusammenbauen
-      var body =
-        "Name: " + name + "\n" +
-        "E-Mail: " + email + "\n\n" +
-        nachricht;
-      var href =
-        "mailto:" + EMPFAENGER +
-        "?subject=" + encodeURIComponent(betreff) +
-        "&body=" + encodeURIComponent(body);
+      submitBtn.disabled = true;
+      setNote("Wird gesendet …", "");
 
-      window.location.href = href;
-      setNote("Ihr E-Mail-Programm wurde geöffnet. Bitte senden Sie die Nachricht dort ab.", "ok");
-      form.reset();
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          submitBtn.disabled = false;
+          if (data.success) {
+            setNote("Vielen Dank! Ihre Nachricht wurde versendet.", "ok");
+            form.reset();
+          } else {
+            setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.", "err");
+          }
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.", "err");
+        });
     });
   }
 
