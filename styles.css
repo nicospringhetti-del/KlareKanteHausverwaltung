@@ -173,6 +173,7 @@ a { color: inherit; }
   font-weight: 600; line-height: 0.95; letter-spacing: -0.03em;
   margin-bottom: 1.75rem;
 }
+.hero-title-long { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.15; }
 .hero-title .accent { color: var(--sage); font-style: italic; }
 .hero-title .outline {
   color: transparent; -webkit-text-stroke: 2px var(--ink); text-stroke: 2px var(--ink);
