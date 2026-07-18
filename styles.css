@@ -10,11 +10,11 @@
   --paper-2:    #E7E0D0;   /* leicht getönte Fläche */
   --ink:        #16150E;   /* Text, warmes Fast-Schwarz */
   --ink-soft:   #55513F;   /* gedämpfter Text */
-  --pine:       #1E3D31;   /* Markengrün (dunkle Sektionen) */
-  --pine-deep:  #15291F;
-  --sage:       #3E7A5B;   /* Akzentgrün, Basis */
-  --sage-deep:  #2C5940;   /* Akzentgrün, kräftig (Text auf hellem Grund) */
-  --sage-light: #8ED1A8;   /* Akzentgrün, hell (auf dunklen Sektionen) */
+  --pine:       #1E3A5F;   /* Markenblau (dunkle Sektionen, Navigation) */
+  --pine-deep:  #142943;
+  --sage:       #4F6D5A;   /* Waldgrün, Akzent (Buttons/Icons), Basis */
+  --sage-deep:  #395048;   /* Waldgrün, kräftig (Text auf hellem Grund) */
+  --sage-light: #9BC2AC;   /* Waldgrün, hell (auf dunklen Sektionen) */
   --clay:       #C0562F;   /* Terrakotta – nur noch als seltener Einzelakzent */
   --clay-deep:  #9E4322;
   --line:       rgba(22, 21, 14, 0.16);
@@ -320,7 +320,7 @@ a { color: inherit; }
 }
 .portrait-photo {
   display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
-  border: 1.5px solid var(--ink); box-shadow: 14px 14px 0 var(--sage);
+  border: 1.5px solid var(--ink); box-shadow: 14px 14px 0 var(--pine);
 }
 .about-copy .section-title { margin-top: 0.5rem; }
 .about-lead { font-size: 1.2rem; margin: 1.5rem 0 1rem; }
