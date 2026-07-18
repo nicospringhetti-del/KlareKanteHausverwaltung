@@ -12,9 +12,9 @@
   --ink-soft:   #55513F;   /* gedämpfter Text */
   --pine:       #1E3A5F;   /* Markenblau (dunkle Sektionen, Navigation) */
   --pine-deep:  #142943;
-  --sage:       #4F6D5A;   /* Waldgrün, Akzent (Buttons/Icons), Basis */
-  --sage-deep:  #395048;   /* Waldgrün, kräftig (Text auf hellem Grund) */
-  --sage-light: #9BC2AC;   /* Waldgrün, hell (auf dunklen Sektionen) */
+  --sage:       #2F5C8A;   /* Akzentblau, Basis */
+  --sage-deep:  #1E3A5F;   /* Akzentblau, kräftig (Text auf hellem Grund) */
+  --sage-light: #8FB4D9;   /* Akzentblau, hell (auf dunklen Sektionen) */
   --clay:       #C0562F;   /* Terrakotta – nur noch als seltener Einzelakzent */
   --clay-deep:  #9E4322;
   --line:       rgba(22, 21, 14, 0.16);
