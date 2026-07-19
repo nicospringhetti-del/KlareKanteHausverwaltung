@@ -12,8 +12,7 @@ Kein Build-Schritt, keine Datenbank – nur HTML, CSS und ein bisschen JavaScrip
 | `index.html` | Die Startseite (One-Pager) |
 | `styles.css` | Das komplette Design |
 | `script.js` | Navigation, Animationen, Kontaktformular |
-| `brand/` | Logo (Wortmarke + K-Icon) als SVG, einzige Quelle für alle Marken-Grafiken |
-| `favicon.ico`, `icons/`, `apple-touch-icon.png`, `mask-icon.svg`, `og-image.png` | Generierte Favicon-/App-Icon-/Social-Preview-Dateien (siehe `klare-kante-portal/scripts/generate-brand-assets.mjs` im Portal-Repo, dort liegt die Original-Logodatei) |
+| `brand/`, `favicon.ico`, `icons/`, `apple-touch-icon.png`, `og-image.png` | Automatisch aus der Original-Logodatei generierte Marken-Grafiken. **Nicht von Hand bearbeiten oder ersetzen** – die einzige Quelle ist `klare-kante-portal/brand-source/` im Portal-Repo. Dort `npm run generate:brand` ausführen, das Script erzeugt und aktualisiert diese Dateien hier automatisch mit (siehe `brand-source/README.md`) |
 | `manifest.webmanifest` | PWA-Manifest ("Zum Startbildschirm hinzufügen") |
 | `impressum.html` | Impressum (Pflicht in Deutschland) |
 | `datenschutz.html` | Datenschutzerklärung (Pflicht) |
