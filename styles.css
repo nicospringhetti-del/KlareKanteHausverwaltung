@@ -10,11 +10,11 @@
   --paper-2:    #E7E0D0;   /* leicht getönte Fläche */
   --ink:        #16150E;   /* Text, warmes Fast-Schwarz */
   --ink-soft:   #55513F;   /* gedämpfter Text */
-  --pine:       #1E3A5F;   /* Markenblau (dunkle Sektionen, Navigation) */
-  --pine-deep:  #142943;
-  --sage:       #2F5C8A;   /* Akzentblau, Basis */
-  --sage-deep:  #1E3A5F;   /* Akzentblau, kräftig (Text auf hellem Grund) */
-  --sage-light: #8FB4D9;   /* Akzentblau, hell (auf dunklen Sektionen) */
+  --pine:       #2e2a63;   /* Markenindigo (dunkle Sektionen, Navigation) – identisch zur Primärfarbe des Portals */
+  --pine-deep:  #1b1941;
+  --sage:       #45408a;   /* Akzentindigo, Basis */
+  --sage-deep:  #2e2a63;   /* Akzentindigo, kräftig (Text auf hellem Grund) */
+  --sage-light: #a4a1c7;   /* Akzentindigo, hell (auf dunklen Sektionen) */
   --clay:       #C0562F;   /* Terrakotta – nur noch als seltener Einzelakzent */
   --clay-deep:  #9E4322;
   --line:       rgba(22, 21, 14, 0.16);

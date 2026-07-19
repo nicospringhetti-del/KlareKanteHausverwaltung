@@ -12,7 +12,9 @@ Kein Build-Schritt, keine Datenbank – nur HTML, CSS und ein bisschen JavaScrip
 | `index.html` | Die Startseite (One-Pager) |
 | `styles.css` | Das komplette Design |
 | `script.js` | Navigation, Animationen, Kontaktformular |
-| `favicon.svg` | Das kleine Icon im Browser-Tab |
+| `brand/` | Logo (Wortmarke + K-Icon) als SVG, einzige Quelle für alle Marken-Grafiken |
+| `favicon.ico`, `icons/`, `apple-touch-icon.png`, `mask-icon.svg`, `og-image.png` | Generierte Favicon-/App-Icon-/Social-Preview-Dateien (siehe `klare-kante-portal/scripts/generate-brand-assets.mjs` im Portal-Repo, dort liegt die Original-Logodatei) |
+| `manifest.webmanifest` | PWA-Manifest ("Zum Startbildschirm hinzufügen") |
 | `impressum.html` | Impressum (Pflicht in Deutschland) |
 | `datenschutz.html` | Datenschutzerklärung (Pflicht) |
 
@@ -121,7 +123,7 @@ ersetzen. Der Datenschutz-Hinweis in `datenschutz.html` ist entsprechend anzupas
 ## 🎨 Design-Konzept
 
 - **Ästhetik:** architektonisch-editorial, „klare Kante" = scharfe Ecken, präzises Raster
-- **Farben:** Papier-Creme `#F1ECE1`, Tannengrün `#1E3D31`, Terrakotta `#C0562F`
+- **Farben:** Papier-Creme `#F1ECE1`, Marken-Indigo `#2e2a63` (identisch zur Primärfarbe im Verwaltungsportal), Terrakotta `#C0562F` als seltener Einzelakzent
 - **Schriften:** Fraunces (Display), Archivo (Text), Space Mono (Labels)
 
 Farben zentral änderbar in `styles.css` ganz oben unter `:root { ... }`.
