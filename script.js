@@ -50,6 +50,22 @@
     });
   }
 
+  /* ---------- Phone-Mockup: automatischer Wechsel der Portal-Ansichten ---------- */
+  var phoneScreen = document.getElementById("phone-screen");
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (phoneScreen && !reducedMotion) {
+    var slides = phoneScreen.querySelectorAll(".phone-screen-slide");
+    if (slides.length > 1) {
+      var activeIndex = 0;
+      setInterval(function () {
+        var nextIndex = (activeIndex + 1) % slides.length;
+        slides[activeIndex].classList.remove("is-active");
+        slides[nextIndex].classList.add("is-active");
+        activeIndex = nextIndex;
+      }, 6500);
+    }
+  }
+
   /* ---------- Scroll-Reveal per IntersectionObserver ---------- */
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
