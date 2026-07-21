@@ -42,40 +42,6 @@
 </head>
 <body>
 
-  <!-- ====================================================================
-       ZUGANGSSCHUTZ (vorläufig, bis alle Inhalte final sind)
-       ==================================================================== -->
-  <div id="gate" class="gate-overlay">
-    <form id="gate-form" class="gate-box">
-      <p class="gate-label">Diese Seite ist noch in Arbeit</p>
-      <input type="password" id="gate-input" placeholder="Passwort" autocomplete="off" />
-      <button type="submit" class="btn btn-primary btn-block">Zugang</button>
-      <p id="gate-error" class="gate-error"></p>
-    </form>
-  </div>
-  <script>
-    (function () {
-      var PASSWORD = "Winner2026!?!";
-      var gate = document.getElementById('gate');
-      if (localStorage.getItem('kk_access') === '1') {
-        gate.style.display = 'none';
-      } else {
-        document.documentElement.style.overflow = 'hidden';
-      }
-      document.getElementById('gate-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var val = document.getElementById('gate-input').value;
-        if (val === PASSWORD) {
-          localStorage.setItem('kk_access', '1');
-          gate.style.display = 'none';
-          document.documentElement.style.overflow = '';
-        } else {
-          document.getElementById('gate-error').textContent = 'Falsches Passwort.';
-        }
-      });
-    })();
-  </script>
-
   <a class="skip-link" href="#leistungen">Zum Inhalt springen</a>
 
   <!-- Körnung / Textur-Overlay -->
