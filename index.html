@@ -9,6 +9,7 @@
        ==================================================================== -->
   <title>Klare Kante Hausverwaltung – Professionelle WEG-Verwaltung</title>
   <meta name="description" content="Klare Kante Hausverwaltung – Ihre spezialisierte WEG-Verwaltung. Transparent, erreichbar, verlässlich. Kaufmännische, technische und rechtliche Verwaltung aus einer Hand." />
+  <link rel="canonical" href="https://klarekante-hausverwaltung.de/" />
   <meta name="theme-color" content="#2e2a63" />
 
   <!-- Open Graph (für Vorschau in WhatsApp, LinkedIn etc.) -->
@@ -39,6 +40,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Strukturierte Daten (Schema.org): LocalBusiness (inkl. Organization-
+       Feldern) + WebSite, als @graph verknüpft. Enthält ausschließlich
+       Angaben, die auch sichtbar auf der Seite stehen (Adresse, Telefon,
+       E-Mail, Öffnungszeiten, Name des Inhabers) – keine erfundenen
+       Bewertungen o. Ä. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://klarekante-hausverwaltung.de/#business",
+        "name": "Klare Kante Hausverwaltung",
+        "url": "https://klarekante-hausverwaltung.de/",
+        "logo": "https://klarekante-hausverwaltung.de/brand/logo-wordmark-black.svg",
+        "image": "https://klarekante-hausverwaltung.de/og-image.png",
+        "description": "Spezialisierte WEG-Verwaltung: kaufmännische, technische und rechtliche Verwaltung aus einer Hand. Transparent, erreichbar, verlässlich.",
+        "telephone": "+49-69-8600-7411",
+        "email": "info@klarekante-hausverwaltung.de",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rhönstraße 121",
+          "postalCode": "60385",
+          "addressLocality": "Frankfurt am Main",
+          "addressCountry": "DE"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Frankfurt am Main"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Nico Springhetti"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://klarekante-hausverwaltung.de/#website",
+        "url": "https://klarekante-hausverwaltung.de/",
+        "name": "Klare Kante Hausverwaltung",
+        "inLanguage": "de-DE",
+        "publisher": { "@id": "https://klarekante-hausverwaltung.de/#business" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -309,7 +363,7 @@
     <section class="section about" id="ueber">
       <div class="wrap about-grid">
         <div class="about-media reveal">
-          <img class="portrait-photo" src="bilder/portrait.webp" alt="Nico Springhetti, Inhaber Klare Kante Hausverwaltung" />
+          <img class="portrait-photo" src="bilder/portrait.webp" alt="Nico Springhetti, Inhaber Klare Kante Hausverwaltung" width="400" height="500" loading="lazy" decoding="async" />
         </div>
 
         <div class="about-copy">
