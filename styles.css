@@ -368,6 +368,9 @@ a { color: inherit; }
 .portal-feature h3, .trust-item h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
 .portal-feature p, .trust-item p { font-size: 0.9rem; color: var(--ink-soft); }
 .trust-icon.pending { color: var(--ink-soft); }
+/* Bei ungerader Anzahl Punkte nimmt der letzte die volle Breite ein, damit im
+   2-spaltigen Raster keine leere Lücke entsteht. */
+.trust-grid > .trust-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
 .portal-actions { margin-top: 0.5rem; }
 .portal-note { margin-top: 0.85rem; font-size: 0.82rem; color: var(--ink-soft); max-width: 40ch; }
