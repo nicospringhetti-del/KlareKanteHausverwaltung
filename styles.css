@@ -351,7 +351,7 @@ a { color: inherit; }
 /* =====================================================================
    DIGITALES EIGENTÜMERPORTAL
    ===================================================================== */
-.portal-showcase { background: var(--paper); border-top: 1.5px solid var(--ink); }
+.portal-showcase, .faq { background: var(--paper); border-top: 1.5px solid var(--ink); }
 .einsatzgebiet { background: var(--paper-2); border-top: 1.5px solid var(--ink); }
 .portal-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
 .portal-lead { margin-top: 1rem; color: var(--ink-soft); max-width: 52ch; }
@@ -403,6 +403,25 @@ a { color: inherit; }
 .portal-qr-code { background: var(--paper); border: 1.5px solid var(--ink); padding: 10px; }
 .portal-qr-caption { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
 .portal-qr-hint { font-size: 0.8rem; color: var(--ink-soft); }
+
+/* =====================================================================
+   HÄUFIGE FRAGEN — reines CSS-Akkordion (details/summary, kein JS)
+   ===================================================================== */
+.faq-list { display: flex; flex-direction: column; gap: 0.9rem; max-width: 760px; }
+.faq-item { background: var(--paper); border: 1.5px solid var(--ink); }
+.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.25rem 1.5rem; cursor: pointer; list-style: none;
+  font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; flex: none; display: inline-block;
+  font-family: var(--font-mono); font-size: 1.3rem; line-height: 1; color: var(--sage-deep);
+  transition: transform 0.3s var(--ease);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding: 0 1.5rem 1.5rem; color: var(--ink-soft); font-size: 0.95rem; max-width: 68ch; }
 
 /* =====================================================================
    KONTAKT — dunkle Sektion
