@@ -352,6 +352,7 @@ a { color: inherit; }
    DIGITALES EIGENTÜMERPORTAL
    ===================================================================== */
 .portal-showcase { background: var(--paper); border-top: 1.5px solid var(--ink); }
+.einsatzgebiet { background: var(--paper-2); border-top: 1.5px solid var(--ink); }
 .portal-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
 .portal-lead { margin-top: 1rem; color: var(--ink-soft); max-width: 52ch; }
 
