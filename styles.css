@@ -478,6 +478,8 @@ a { color: inherit; }
 .legal-hinweis { background: var(--paper-2); border-left: 4px solid var(--sage); padding: 1rem 1.25rem; margin-bottom: 2.5rem; font-size: 0.95rem; color: var(--ink-soft); }
 .legal h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; margin: 2rem 0 0.6rem; }
 .legal p { color: var(--ink-soft); margin-bottom: 0.5rem; }
+.legal ul { color: var(--ink-soft); margin: 0 0 0.75rem; padding-left: 1.25rem; }
+.legal li { margin-bottom: 0.3rem; }
 .legal a { color: var(--sage-deep); }
 .legal-back { margin-top: 3rem; font-family: var(--font-mono); font-size: 0.85rem; }
 .legal-back a { text-decoration: none; }
