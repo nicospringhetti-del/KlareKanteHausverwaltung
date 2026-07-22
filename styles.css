@@ -234,7 +234,7 @@ a { color: inherit; }
    KENNZAHLEN
    ===================================================================== */
 .stats { border-block: 1.5px solid var(--ink); background: var(--paper-2); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .stat {
   padding: clamp(1.75rem, 4vw, 2.75rem) 1.5rem; text-align: center;
   border-left: 1px solid var(--line);
@@ -501,8 +501,10 @@ a { color: inherit; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(3) { border-left: none; }
-  .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--line); }
+  .stat:nth-child(3) { border-left: none; border-top: 1px solid var(--line); }
+  /* Bei ungerader Anzahl Punkte nimmt der letzte im 2-spaltigen Raster die
+     volle Breite ein, damit keine leere Lücke entsteht. */
+  .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .principle-list { grid-template-columns: 1fr; }
   .principle:nth-child(odd) { border-right: none; }
@@ -524,7 +526,9 @@ a { color: inherit; }
   .steps { grid-template-columns: 1fr; }
   .step { border-right: none; border-bottom: 1px solid var(--line); }
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .hero-title { font-size: clamp(2.75rem, 14vw, 4rem); }
+  .hero { padding-block: 2rem; }
+  .hero-title-long { font-size: clamp(1.15rem, 5.2vw, 1.4rem); margin-bottom: 1.25rem; }
+  .hero-lead { font-size: 1rem; margin-bottom: 1.5rem; }
   .btn { width: 100%; }
 }
 
