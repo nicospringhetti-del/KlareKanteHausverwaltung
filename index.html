@@ -5,27 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ====================================================================
-       SEO / META  –  hier später echte Domain & Beschreibung eintragen
+       SEO / META
+       Suchintention: „WEG-Hausverwaltung Frankfurt“, „WEG-Verwaltung
+       Frankfurt“, „Hausverwaltung Frankfurt“. Title 42 Z., Description
+       152 Z. – beide innerhalb der üblichen SERP-Darstellungsbreite.
        ==================================================================== -->
-  <title>Klare Kante Hausverwaltung – Professionelle WEG-Verwaltung</title>
-  <meta name="description" content="Klare Kante Hausverwaltung – Ihre spezialisierte WEG-Verwaltung. Transparent, erreichbar, verlässlich. Kaufmännische, technische und rechtliche Verwaltung aus einer Hand." />
+  <title>WEG-Hausverwaltung Frankfurt | Klare Kante</title>
+  <meta name="description" content="Persönliche WEG-Hausverwaltung in Frankfurt: transparente Abläufe, gute Erreichbarkeit und ein digitales Eigentümerportal. Jetzt Erstgespräch anfragen." />
   <link rel="canonical" href="https://klarekante-hausverwaltung.de/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#2e2a63" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Open Graph (für Vorschau in WhatsApp, LinkedIn etc.) -->
-  <meta property="og:title" content="Klare Kante Hausverwaltung – Professionelle WEG-Verwaltung" />
-  <meta property="og:description" content="Spezialisierte WEG-Verwaltung: transparent, erreichbar, verlässlich." />
+  <meta property="og:title" content="WEG-Hausverwaltung Frankfurt | Klare Kante" />
+  <meta property="og:description" content="Persönliche WEG-Hausverwaltung in Frankfurt: transparente Abläufe, gute Erreichbarkeit und ein digitales Eigentümerportal." />
   <meta property="og:image" content="https://klarekante-hausverwaltung.de/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung in Frankfurt am Main" />
+  <meta property="og:url" content="https://klarekante-hausverwaltung.de/" />
+  <meta property="og:site_name" content="Klare Kante Hausverwaltung" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="de_DE" />
 
   <!-- Twitter/X Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Klare Kante Hausverwaltung – Professionelle WEG-Verwaltung" />
-  <meta name="twitter:description" content="Spezialisierte WEG-Verwaltung: transparent, erreichbar, verlässlich." />
+  <meta name="twitter:title" content="WEG-Hausverwaltung Frankfurt | Klare Kante" />
+  <meta name="twitter:description" content="Persönliche WEG-Hausverwaltung in Frankfurt: transparente Abläufe, gute Erreichbarkeit und ein digitales Eigentümerportal." />
   <meta name="twitter:image" content="https://klarekante-hausverwaltung.de/og-image.png" />
+  <meta name="twitter:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung in Frankfurt am Main" />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -33,6 +42,12 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="mask-icon" href="/mask-icon.svg" color="#1d1d1b" />
   <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Progressive Enhancement: markiert das Dokument als JS-fähig, damit
+       die Scroll-Reveal-Animation NUR dann Inhalte zunächst ausblendet,
+       wenn JavaScript sie auch wieder einblenden kann. Ohne JS bleibt der
+       gesamte Inhalt sichtbar. -->
+  <script>document.documentElement.classList.add("js");</script>
 
   <!-- Schriften -->
   <link rel="stylesheet" href="fonts.css" />
@@ -52,26 +67,43 @@
         "@type": "LocalBusiness",
         "@id": "https://klarekante-hausverwaltung.de/#business",
         "name": "Klare Kante Hausverwaltung",
+        "legalName": "Nico Springhetti – Klare Kante Hausverwaltung",
         "url": "https://klarekante-hausverwaltung.de/",
-        "logo": "https://klarekante-hausverwaltung.de/brand/logo-wordmark-black.svg",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://klarekante-hausverwaltung.de/#logo",
+          "url": "https://klarekante-hausverwaltung.de/brand/logo-wordmark-black.svg",
+          "caption": "Klare Kante Hausverwaltung"
+        },
         "image": "https://klarekante-hausverwaltung.de/og-image.png",
-        "description": "Spezialisierte WEG-Verwaltung: kaufmännische, technische und rechtliche Verwaltung aus einer Hand. Transparent, erreichbar, verlässlich.",
-        "telephone": "+49-69-8600-7411",
+        "description": "Persönliche WEG-Hausverwaltung in Frankfurt am Main: kaufmännische, technische und rechtliche Verwaltung aus einer Hand, mit digitalem Eigentümerportal.",
+        "telephone": "+49 69 86007411",
         "email": "info@klarekante-hausverwaltung.de",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Rhönstraße 121",
           "postalCode": "60385",
           "addressLocality": "Frankfurt am Main",
+          "addressRegion": "Hessen",
           "addressCountry": "DE"
         },
-        "areaServed": {
-          "@type": "City",
-          "name": "Frankfurt am Main"
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+49 69 86007411",
+          "email": "info@klarekante-hausverwaltung.de",
+          "availableLanguage": "German",
+          "areaServed": "DE"
         },
+        "areaServed": [
+          { "@type": "City", "name": "Frankfurt am Main" },
+          { "@type": "AdministrativeArea", "name": "Rhein-Main-Gebiet" }
+        ],
         "founder": {
           "@type": "Person",
-          "name": "Nico Springhetti"
+          "@id": "https://klarekante-hausverwaltung.de/#founder",
+          "name": "Nico Springhetti",
+          "jobTitle": "Inhaber"
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
@@ -87,6 +119,91 @@
         "name": "Klare Kante Hausverwaltung",
         "inLanguage": "de-DE",
         "publisher": { "@id": "https://klarekante-hausverwaltung.de/#business" }
+      },
+      {
+        "@type": ["WebPage", "FAQPage"],
+        "@id": "https://klarekante-hausverwaltung.de/#webpage",
+        "url": "https://klarekante-hausverwaltung.de/",
+        "name": "WEG-Hausverwaltung Frankfurt | Klare Kante",
+        "description": "Persönliche WEG-Hausverwaltung in Frankfurt: transparente Abläufe, gute Erreichbarkeit und ein digitales Eigentümerportal.",
+        "inLanguage": "de-DE",
+        "isPartOf": { "@id": "https://klarekante-hausverwaltung.de/#website" },
+        "about": { "@id": "https://klarekante-hausverwaltung.de/#business" },
+        "primaryImageOfPage": { "@id": "https://klarekante-hausverwaltung.de/#logo" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wie aufwendig ist ein Verwalterwechsel für uns als Eigentümergemeinschaft?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Verwalterwechsel wird oft als großer Aufwand empfunden – in der Praxis übernehmen wir den Großteil der Arbeit. Nach dem Erstgespräch und einem transparenten Angebot kümmern wir uns um die Übernahme der Unterlagen, Konten und Fristen von Ihrer bisherigen Verwaltung. Für die Eigentümergemeinschaft bedeutet das vor allem: einen Beschluss über den Wechsel fassen und uns die nötigen Vollmachten erteilen. Den organisatorischen Rest übernehmen wir. Kündigungsfristen und formale Details zum bestehenden Verwaltervertrag besprechen wir im Erstgespräch, da sie von Vertrag zu Vertrag unterschiedlich sind."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Welche Unterlagen benötigen Sie für ein Angebot?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Für ein erstes, unverbindliches Angebot reichen meist wenige Basisangaben: Anzahl der Einheiten, aktuelle Jahresabrechnung oder Wirtschaftsplan sowie – falls vorhanden – die Teilungserklärung. Weitere Unterlagen wie Beschlusssammlungen oder Wartungsverträge sind hilfreich, aber für ein erstes Angebot nicht zwingend notwendig. Falls einzelne Dokumente gerade nicht griffbereit sind, ist das kein Hindernis für ein Erstgespräch – wir sagen Ihnen dann genau, was für die nächsten Schritte noch gebraucht wird. So bleibt der Einstieg unkompliziert, auch wenn die Unterlagenlage bei der bisherigen Verwaltung nicht vollständig ist."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie schnell können Sie eine WEG übernehmen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Das hängt vor allem vom Kündigungstermin bei der bisherigen Verwaltung und vom Übergabezeitpunkt der Unterlagen ab – beides liegt nicht allein in unserer Hand. Sobald der Beschluss zum Wechsel gefasst ist, beginnen wir zeitnah mit der Übernahme von Unterlagen, Konten und offenen Vorgängen. Ein realistischer Zeitrahmen lässt sich am besten im persönlichen Gespräch einschätzen, da er von der Komplexität der Immobilie und dem Zustand der vorhandenen Unterlagen abhängt. Pauschale Fristen zu nennen wäre unseriös – wir geben Ihnen im Erstgespräch eine ehrliche Einschätzung für Ihre konkrete Situation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was kostet eine Hausverwaltung bei Ihnen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die Kosten einer WEG-Verwaltung hängen von mehreren Faktoren ab – etwa der Anzahl der Einheiten, dem Zustand der Immobilie und dem Umfang der gewünschten Leistungen. Deshalb nennen wir hier bewusst keine pauschale Zahl, die im Einzelfall ohnehin nicht zutreffen würde. Nach einem kurzen Erstgespräch erstellen wir ein individuelles und transparentes Angebot, das genau auf Ihre Eigentümergemeinschaft zugeschnitten ist. So wissen Sie von Anfang an, welche Leistungen enthalten sind und mit welchen Kosten Sie rechnen können. Das Erstgespräch ist selbstverständlich kostenlos und unverbindlich."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Zusammenarbeit mit dem Verwaltungsbeirat konkret ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Der Beirat ist für uns der zentrale Ansprechpartner der Eigentümergemeinschaft zwischen den Versammlungen. Wichtige Entscheidungen, größere Maßnahmen oder ungewöhnliche Ausgaben stimmen wir mit dem Beirat ab, bevor sie umgesetzt werden. Rückfragen beantworten wir direkt und ohne Umwege über eine Zentrale – Sie erreichen mich persönlich. Die Eigentümerversammlung bleibt selbstverständlich das entscheidende Gremium; der Beirat unterstützt und begleitet die laufende Verwaltung. Wie eng oder regelmäßig der Austausch im Detail erfolgt, stimmen wir individuell mit dem jeweiligen Beirat ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie und wie oft werden Eigentümer informiert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wichtige Dokumente wie Abrechnungen, Beschlüsse und Unterlagen stellen wir über das digitale Eigentümerportal zur Verfügung, auf das jeder Eigentümer jederzeit zugreifen kann. Bei größeren Vorgängen – etwa anstehenden Maßnahmen oder Beschlüssen – informieren wir zusätzlich direkt. Eine feste, immer gleiche Informationsfrequenz gibt es bewusst nicht: Wie oft kommuniziert wird, richtet sich danach, wie viel gerade tatsächlich zu berichten gibt. Grundsätzlich gilt: lieber eine Information zu viel als eine zu wenig, damit für Sie jederzeit nachvollziehbar bleibt, was in Ihrer Gemeinschaft passiert."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie schnell reagieren Sie auf Anfragen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In der Regel melden wir uns innerhalb von 24 Stunden zurück, telefonisch oder per E-Mail. Da ich persönlich Ihr Ansprechpartner bin und keine Anfragen an wechselnde Sachbearbeiter weitergegeben werden, wissen Sie immer, mit wem Sie sprechen. Erreichbar bin ich werktags Montag bis Freitag von 09:00 bis 17:00 Uhr. Dringende Anliegen bearbeiten wir selbstverständlich so schnell wie möglich."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie funktioniert die digitale Eigentümerplattform?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach Übernahme der Verwaltung erhalten Sie Zugang zu unserem digitalen Eigentümerportal. Dort finden Sie zentral alle wichtigen Unterlagen – etwa Teilungserklärung, Beschlüsse und Abrechnungen – jederzeit abrufbar, ohne dass Sie danach fragen oder warten müssen. Das Portal funktioniert auf Computer, Tablet und Smartphone und lässt sich auf dem Smartphone wie eine App nutzen. Es ersetzt keine persönliche Kommunikation, sondern ergänzt sie: für alles, was schnell und unkompliziert digital erledigt werden kann, während persönliche Rückfragen weiterhin direkt bei mir landen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Sind meine Daten im Eigentümerportal sicher?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die Sicherheit Ihrer Daten ist uns wichtig, insbesondere da über das Portal teils sensible Unterlagen wie Abrechnungen oder Beschlüsse bereitgestellt werden. Der Zugang zum Eigentümerportal ist durch eine persönliche Anmeldung geschützt und ausschließlich über eine verschlüsselte Verbindung (HTTPS) erreichbar. Jeder Eigentümer sieht dabei ausschließlich die für ihn freigegebenen Informationen zu seiner eigenen Immobilie. Welche technischen und organisatorischen Maßnahmen darüber hinaus greifen, ist in unserer Datenschutzerklärung beschrieben; bei konkreten Fragen stehe ich Ihnen darüber hinaus auch persönlich zur Verfügung."
+            }
+          }
+        ]
       }
     ]
   }
@@ -94,7 +211,7 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#leistungen">Zum Inhalt springen</a>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <!-- Körnung / Textur-Overlay -->
   <div class="grain" aria-hidden="true"></div>
@@ -106,7 +223,7 @@
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="Klare Kante Hausverwaltung – Startseite">
         <span class="brand-logo-plate">
-          <img class="brand-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" />
+          <img class="brand-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" width="257" height="74" fetchpriority="high" />
         </span>
       </a>
 
@@ -139,7 +256,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <!-- ==================================================================
          HERO
@@ -148,12 +265,16 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <h1 class="hero-title hero-title-long reveal" data-delay="1">
-            Spezialisiert auf WEG-Verwaltung.<br />Für Eigentümer, die Verlässlichkeit erwarten.
+            WEG-Hausverwaltung in Frankfurt,<br />auf die Sie sich verlassen können.
           </h1>
           <p class="hero-lead reveal" data-delay="2">
-            WEG-Verwaltung ist oft kompliziert und undurchsichtig. Ich sorge persönlich
-            dafür, dass Ihre Eigentümergemeinschaft transparent abgerechnet, jederzeit
-            erreichbar und zuverlässig betreut wird.
+            Persönlich, transparent und digital – für Wohnungseigentümergemeinschaften
+            in Frankfurt und im Rhein-Main-Gebiet.
+          </p>
+          <p class="hero-lead-support reveal" data-delay="2">
+            Ich sorge persönlich dafür, dass Ihre Eigentümergemeinschaft nachvollziehbar
+            abgerechnet und zuverlässig betreut wird – mit einem festen Ansprechpartner
+            und Rückmeldung in der Regel innerhalb von 24 Stunden.
           </p>
           <div class="hero-actions reveal" data-delay="3">
             <a href="#kontakt" class="btn btn-primary">Erstgespräch anfragen</a>
@@ -192,8 +313,8 @@
           <span class="stat-label">Reaktionszeit</span>
         </div>
         <div class="stat reveal" data-delay="3">
-          <span class="stat-num">100 %</span>
-          <span class="stat-label">digitale Abrechnung</span>
+          <span class="stat-num">Digital</span>
+          <span class="stat-label">Abrechnungen &amp; Unterlagen im Eigentümerportal</span>
         </div>
       </div>
     </section>
@@ -229,7 +350,7 @@
           <article class="card reveal" data-delay="2">
             <span class="card-num">03</span>
             <h3>Eigentümerversammlung</h3>
-            <p>Vorbereitung, Einladung, Durchführung und rechtssichere Protokollierung – inklusive konsequenter Umsetzung der Beschlüsse.</p>
+            <p>Vorbereitung, Einladung, Durchführung sowie sorgfältige und nachvollziehbare Protokollierung nach den gesetzlichen Vorgaben – inklusive konsequenter Umsetzung der Beschlüsse.</p>
           </article>
 
           <article class="card reveal">
@@ -241,7 +362,7 @@
           <article class="card reveal" data-delay="1">
             <span class="card-num">05</span>
             <h3>Jahresabrechnung</h3>
-            <p>Transparente, nachvollziehbare Abrechnungen mit klaren Zahlen – digital einsehbar und jederzeit für alle Eigentümer verständlich.</p>
+            <p>Transparente, nachvollziehbare Abrechnungen mit klaren Zahlen – digital einsehbar und für alle Eigentümer verständlich aufbereitet.</p>
           </article>
 
           <article class="card reveal" data-delay="2">
@@ -550,9 +671,9 @@
           <div class="phone-mockup">
             <div class="phone-notch" aria-hidden="true"></div>
             <div class="phone-screen" id="phone-screen">
-              <img class="phone-screen-slide is-active" src="bilder/portal-mockup-login.png" alt="Login-Ansicht des digitalen Eigentümerportals" loading="lazy" />
-              <img class="phone-screen-slide" src="bilder/portal-mockup-dashboard.png" alt="Dashboard-Ansicht des digitalen Eigentümerportals" loading="lazy" />
-              <img class="phone-screen-slide" src="bilder/portal-mockup-wegs.png" alt="WEG-Übersicht des digitalen Eigentümerportals" loading="lazy" />
+              <img class="phone-screen-slide is-active" src="bilder/portal-mockup-login.png" alt="Login-Ansicht des digitalen Eigentümerportals" width="750" height="1560" loading="lazy" decoding="async" />
+              <img class="phone-screen-slide" src="bilder/portal-mockup-dashboard.png" alt="Dashboard-Ansicht des digitalen Eigentümerportals" width="750" height="1560" loading="lazy" decoding="async" />
+              <img class="phone-screen-slide" src="bilder/portal-mockup-wegs.png" alt="WEG-Übersicht des digitalen Eigentümerportals" width="750" height="1560" loading="lazy" decoding="async" />
             </div>
           </div>
 
@@ -759,7 +880,7 @@
             </li>
             <li>
               <span class="c-label">Adresse</span>
-              <span>Rhönstraße 121<br />60385 Frankfurt</span>
+              <span>Rhönstraße 121<br />60385 Frankfurt am Main</span>
             </li>
             <li>
               <span class="c-label">Erreichbar</span>
@@ -770,33 +891,95 @@
 
         <!-- ==============================================================
              KONTAKTFORMULAR
-             Hinweis: Eine statische Seite kann selbst keine Mails senden.
-             Standardmäßig öffnet dieses Formular das E-Mail-Programm des
-             Besuchers (mailto). Für echten Server-Versand siehe README.md
-             (z. B. Formspree – dann action=... eintragen).
+             Versand über Web3Forms (api.web3forms.com) – siehe script.js.
+             Die Feldnamen (name-Attribute) erscheinen so in der
+             Anfrage-E-Mail. Pflichtfelder sind zusätzlich zur nativen
+             HTML-Validierung in script.js abgesichert (feldbezogene
+             Fehlermeldungen, Fokussprung).
              ============================================================== -->
         <form class="contact-form reveal" id="kontaktformular" novalidate>
           <input type="hidden" name="access_key" value="e74979e2-07bd-44d9-beed-bf163b020360" />
           <input type="hidden" name="subject" value="Neue Anfrage über klarekante-hausverwaltung.de" />
           <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
+
           <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required placeholder="Ihr Name" />
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" placeholder="Ihr Name" />
+            <span class="field-error" id="err-name" hidden></span>
           </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="ihre@email.de" />
+              <span class="field-error" id="err-email" hidden></span>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span class="field-opt">(optional)</span></label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Für einen Rückruf" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="plz">PLZ oder Stadtteil der Immobilie <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="plz" name="plz_stadtteil" required aria-required="true" placeholder="z. B. 60385 oder Bornheim" />
+              <span class="field-error" id="err-plz" hidden></span>
+            </div>
+            <div class="field">
+              <label for="einheiten">Anzahl der Einheiten <span class="req" aria-hidden="true">*</span></label>
+              <select id="einheiten" name="anzahl_einheiten" required aria-required="true">
+                <option value="" selected disabled>Bitte wählen</option>
+                <option value="1–10">1–10 Einheiten</option>
+                <option value="11–25">11–25 Einheiten</option>
+                <option value="26–50">26–50 Einheiten</option>
+                <option value="über 50">über 50 Einheiten</option>
+              </select>
+              <span class="field-error" id="err-einheiten" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="status">Aktueller Verwaltungsstatus <span class="field-opt">(optional)</span></label>
+              <select id="status" name="verwaltungsstatus">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Verwalterwechsel geplant">Verwalterwechsel geplant</option>
+                <option value="Verwalter gekündigt">Verwalter gekündigt</option>
+                <option value="Neubau / Erstbestellung">Neubau / Erstbestellung</option>
+                <option value="Erste Orientierung">Erste Orientierung</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zeitpunkt">Gewünschter Übernahmezeitpunkt <span class="field-opt">(optional)</span></label>
+              <select id="zeitpunkt" name="uebernahmezeitpunkt">
+                <option value="" selected>Bitte wählen</option>
+                <option value="So bald wie möglich">So bald wie möglich</option>
+                <option value="In den nächsten 3 Monaten">In den nächsten 3 Monaten</option>
+                <option value="In 3–6 Monaten">In 3–6 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
+            </div>
+          </div>
+
           <div class="field">
-            <label for="email">E-Mail</label>
-            <input type="email" id="email" name="email" autocomplete="email" required placeholder="ihre@email.de" />
+            <label for="nachricht">Nachricht <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="nachricht" name="nachricht" rows="5" required aria-required="true" placeholder="Beschreiben Sie kurz Ihr Anliegen – z. B. Lage der Immobilie, aktuelle Situation und was Sie sich von uns wünschen."></textarea>
+            <span class="field-error" id="err-nachricht" hidden></span>
           </div>
-          <div class="field">
-            <label for="betreff">Betreff</label>
-            <input type="text" id="betreff" name="betreff" placeholder="z. B. Angebot für unsere WEG" />
-          </div>
-          <div class="field">
-            <label for="nachricht">Nachricht</label>
-            <textarea id="nachricht" name="nachricht" rows="5" required placeholder="Wie können wir helfen?"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Nachricht senden</button>
-          <p class="form-note" id="form-note" role="status"></p>
+
+          <p class="form-required-hint"><span class="req" aria-hidden="true">*</span> Pflichtfeld</p>
+
+          <button type="submit" class="btn btn-primary btn-block">Unverbindliches Erstgespräch anfragen</button>
+
+          <p class="form-privacy-note">
+            Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+            Weitere Informationen finden Sie in unserer
+            <a href="datenschutz.html">Datenschutzerklärung</a>.
+          </p>
+
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -810,7 +993,7 @@
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <span class="brand-logo-plate">
-          <img class="brand-logo footer-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" />
+          <img class="brand-logo footer-logo" src="/brand/logo-wordmark-black.svg" alt="" width="222" height="64" loading="lazy" />
         </span>
         <p class="footer-claim">Keine Ausreden. Keine leeren Versprechen. Klare Kommunikation. Klare Entscheidungen. Klare Ergebnisse.</p>
       </div>

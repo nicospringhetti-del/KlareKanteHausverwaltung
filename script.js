@@ -88,26 +88,74 @@
 
   /* ---------- Kontaktformular ----------
      Versand über Web3Forms (api.web3forms.com) – kein eigener Server nötig.
+     Feldbezogene Validierung mit aria-invalid, Fehlermeldung pro Feld und
+     Fokussprung auf das erste fehlerhafte Feld.
   */
   var form = document.getElementById("kontaktformular");
   var note = document.getElementById("form-note");
   var submitBtn = form ? form.querySelector("button[type=submit]") : null;
 
+  // Pflichtfelder: Feld-ID -> Fehlermeldung + zugehörige Fehler-Span-ID
+  var requiredFields = [
+    { id: "name",      err: "err-name",      msg: "Bitte geben Sie Ihren Namen an." },
+    { id: "email",     err: "err-email",     msg: "Bitte geben Sie eine gültige E-Mail-Adresse an." },
+    { id: "plz",       err: "err-plz",       msg: "Bitte geben Sie PLZ oder Stadtteil der Immobilie an." },
+    { id: "einheiten", err: "err-einheiten", msg: "Bitte wählen Sie die Anzahl der Einheiten." },
+    { id: "nachricht", err: "err-nachricht", msg: "Bitte beschreiben Sie kurz Ihr Anliegen." }
+  ];
+
+  function showFieldError(field, show) {
+    var input = document.getElementById(field.id);
+    var errEl = document.getElementById(field.err);
+    if (!input || !errEl) return;
+    if (show) {
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", field.err);
+      errEl.textContent = field.msg;
+      errEl.hidden = false;
+    } else {
+      input.removeAttribute("aria-invalid");
+      input.removeAttribute("aria-describedby");
+      errEl.textContent = "";
+      errEl.hidden = true;
+    }
+  }
+
+  function fieldValid(field) {
+    var input = document.getElementById(field.id);
+    if (!input) return true;
+    var val = (input.value || "").trim();
+    if (!val) return false;
+    if (field.id === "email") {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    }
+    return true;
+  }
+
   if (form) {
+    // Fehlerzustand aufheben, sobald der Nutzer ein Feld korrigiert
+    requiredFields.forEach(function (field) {
+      var input = document.getElementById(field.id);
+      if (!input) return;
+      var evt = input.tagName === "SELECT" ? "change" : "input";
+      input.addEventListener(evt, function () {
+        if (fieldValid(field)) showFieldError(field, false);
+      });
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var nachricht = form.nachricht.value.trim();
+      var firstInvalid = null;
+      requiredFields.forEach(function (field) {
+        var valid = fieldValid(field);
+        showFieldError(field, !valid);
+        if (!valid && !firstInvalid) firstInvalid = document.getElementById(field.id);
+      });
 
-      // einfache Validierung
-      if (!name || !email || !nachricht) {
-        setNote("Bitte füllen Sie Name, E-Mail und Nachricht aus.", "err");
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setNote("Bitte geben Sie eine gültige E-Mail-Adresse an.", "err");
+      if (firstInvalid) {
+        setNote("Bitte prüfen Sie die markierten Felder.", "err");
+        firstInvalid.focus();
         return;
       }
 
@@ -123,15 +171,15 @@
         .then(function (data) {
           submitBtn.disabled = false;
           if (data.success) {
-            setNote("Vielen Dank! Ihre Nachricht wurde versendet.", "ok");
+            setNote("Vielen Dank für Ihre Anfrage. Wir melden uns in der Regel innerhalb von 24 Stunden an Werktagen bei Ihnen.", "ok");
             form.reset();
           } else {
-            setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.", "err");
+            setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie uns an.", "err");
           }
         })
         .catch(function () {
           submitBtn.disabled = false;
-          setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.", "err");
+          setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie uns an.", "err");
         });
     });
   }

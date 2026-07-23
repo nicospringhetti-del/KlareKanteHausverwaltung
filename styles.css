@@ -72,6 +72,31 @@ a { color: inherit; }
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
 
+/* ---------- Sichtbarer Fokus für Tastaturbedienung (WCAG 2.4.7 / 2.4.13) ----------
+   Deutlicher, markenkonformer Indikator für alle interaktiven Elemente.
+   :focus-visible zeigt den Ring nur bei Tastatur-/Nicht-Zeiger-Fokus. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 3px solid var(--sage-deep);
+  outline-offset: 2px;
+}
+/* Auf dunklen Sektionen heller Ring für ausreichenden Kontrast */
+.principles a:focus-visible,
+.contact a:focus-visible,
+.principles summary:focus-visible {
+  outline-color: var(--sage-light);
+}
+/* Fallback für Browser ohne :focus-visible-Unterstützung */
+.no-focus-visible a:focus,
+.no-focus-visible button:focus { outline: 3px solid var(--sage-deep); outline-offset: 2px; }
+/* <main> erhält beim Skip-Link-Sprung keinen sichtbaren Rahmen */
+main:focus { outline: none; }
+
 /* =====================================================================
    HEADER
    ===================================================================== */
@@ -194,7 +219,8 @@ a { color: inherit; }
 .hero-title .outline {
   color: transparent; -webkit-text-stroke: 2px var(--ink); text-stroke: 2px var(--ink);
 }
-.hero-lead { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem); max-width: 42ch; color: var(--ink-soft); margin-bottom: 2.25rem; }
+.hero-lead { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem); max-width: 42ch; color: var(--ink-soft); margin-bottom: 1.25rem; }
+.hero-lead-support { font-size: clamp(0.98rem, 0.95rem + 0.2vw, 1.08rem); max-width: 46ch; color: var(--ink-soft); margin-bottom: 2.25rem; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
@@ -444,14 +470,34 @@ a { color: inherit; }
 .hidden-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .field { margin-bottom: 1.1rem; display: grid; gap: 0.4rem; }
 .field label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
-.field input, .field textarea {
+.field .req { color: var(--clay-deep); }
+.field .field-opt { text-transform: none; letter-spacing: 0; color: rgba(85,81,63,0.7); font-size: 0.68rem; }
+.field input, .field textarea, .field select {
   font-family: var(--font-body); font-size: 1rem; color: var(--ink);
   background: var(--paper); border: 1.5px solid var(--line);
   padding: 0.7rem 0.85rem; width: 100%; transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
+.field select { appearance: none; -webkit-appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2355513F' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.2rem; }
 .field input::placeholder, .field textarea::placeholder { color: rgba(85,81,63,0.5); }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--pine); box-shadow: 3px 3px 0 var(--sage); }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--pine); box-shadow: 3px 3px 0 var(--sage); }
+.field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible { outline: 3px solid var(--sage-deep); outline-offset: 2px; }
 .field textarea { resize: vertical; min-height: 120px; }
+
+/* Zwei-spaltige Feldzeile (bricht mobil auf eine Spalte um) */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+
+/* Feldbezogene Fehlerzustände */
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"], .field select[aria-invalid="true"] {
+  border-color: var(--clay-deep); box-shadow: 3px 3px 0 rgba(192,86,47,0.25);
+}
+.field-error { color: var(--clay-deep); font-size: 0.82rem; font-weight: 600; }
+.form-required-hint { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 0.9rem; }
+.form-required-hint .req { color: var(--clay-deep); }
+.form-privacy-note { margin-top: 0.9rem; font-size: 0.82rem; line-height: 1.5; color: var(--ink-soft); }
+.form-privacy-note a { color: var(--sage-deep); text-decoration: underline; }
+
 .form-note { margin-top: 0.9rem; font-size: 0.9rem; min-height: 1.2em; }
 .form-note.ok { color: var(--pine); font-weight: 600; }
 .form-note.err { color: var(--clay-deep); font-weight: 600; }
@@ -486,9 +532,12 @@ a { color: inherit; }
 
 /* =====================================================================
    REVEAL-ANIMATION (per JS aktiviert)
+   Der Ausgangszustand opacity:0 wird NUR gesetzt, wenn JavaScript aktiv
+   ist (Klasse .js am <html>). Ohne JS bleibt der Inhalt vollständig
+   sichtbar – kein Inhalt hängt an der Skriptausführung.
    ===================================================================== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
 .reveal[data-delay="1"] { transition-delay: 0.1s; }
 .reveal[data-delay="2"] { transition-delay: 0.2s; }
 .reveal[data-delay="3"] { transition-delay: 0.3s; }
@@ -530,12 +579,15 @@ a { color: inherit; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .hero { padding-block: 2rem; }
   .hero-title-long { font-size: clamp(1.15rem, 5.2vw, 1.4rem); margin-bottom: 1.25rem; }
-  .hero-lead { font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero-lead { font-size: 1rem; margin-bottom: 1rem; }
+  .hero-lead-support { font-size: 0.95rem; margin-bottom: 1.5rem; }
   .btn { width: 100%; }
+  /* Feldzeilen einspaltig, damit die Eingaben nicht zu schmal werden */
+  .field-row { grid-template-columns: 1fr; gap: 0; }
 }
 
 /* Bewegung reduzieren, wenn gewünscht */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .js .reveal { opacity: 1; transform: none; }
 }
