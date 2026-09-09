@@ -11,3 +11,23 @@
 
 # Lokales Vorschau-Skript
 serve.ps1
+
+# =====================================================================
+# Interne Unterlagen gehören NICHT in dieses Repo (GitHub Pages = öffentlich).
+# Ablageort: ../KI-ARBEITSBEREICH/ (90_VORLAGEN, 07_RECHT_VERTRAEGE, 08_WEBSITE_GOOGLE)
+# Diese Regeln verhindern eine versehentliche Veröffentlichung per `git add .`.
+# =====================================================================
+
+# Dokumente im Repo-Root (Policen, Verträge, Angebote, Protokolle)
+/*.pdf
+/*.docx
+/*.dotx
+/*.xlsx
+/*.pptx
+
+# Vorlagen, Entwürfe, interne Audits – egal in welcher Tiefe
+Vorlagen/
+Entwürfe*/
+Entwuerfe*/
+AUDIT-*.md
+Intern*/
