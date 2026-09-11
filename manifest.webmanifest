@@ -4,7 +4,7 @@
   "description": "Spezialisierte WEG-Verwaltung: transparent, erreichbar, verlässlich.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F1ECE1",
+  "background_color": "#000000",
   "theme_color": "#2e2a63",
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
