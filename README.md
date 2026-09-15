@@ -109,20 +109,10 @@ var EMPFAENGER = "info@klarekante-hausverwaltung.de";
 
 ---
 
-## 🔒 Datenschutz-Hinweis zu Google Fonts
-
-Die Seite lädt die Schriften **Fraunces**, **Archivo** und **Space Mono** von Google.
-Wer die Datenübertragung an Google vermeiden will, kann die Schriften lokal einbinden
-(z. B. über [google-webfonts-helper](https://gwfh.mranftl.com)) und die
-`<link ...fonts.googleapis.com...>`-Zeilen in den HTML-Dateien durch lokale Verweise
-ersetzen. Der Datenschutz-Hinweis in `datenschutz.html` ist entsprechend anzupassen.
-
----
-
 ## 🎨 Design-Konzept
 
 - **Ästhetik:** architektonisch-editorial, „klare Kante" = scharfe Ecken, präzises Raster
 - **Farben:** Papier-Creme `#F1ECE1`, Marken-Indigo `#2e2a63` (identisch zur Primärfarbe im Verwaltungsportal), Terrakotta `#C0562F` als seltener Einzelakzent
-- **Schriften:** Fraunces (Display), Archivo (Text), Space Mono (Labels)
+- **Schriften:** Space Grotesk (Display), Archivo (Text), Space Mono (Labels)
 
 Farben zentral änderbar in `styles.css` ganz oben unter `:root { ... }`.
