@@ -129,6 +129,9 @@
     if (field.id === "email") {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
     }
+    if (field.id === "rr-telefon") {
+      return (val.match(/\d/g) || []).length >= 6;
+    }
     return true;
   }
 
@@ -184,9 +187,110 @@
     });
   }
 
-  function setNote(msg, type) {
-    if (!note) return;
-    note.textContent = msg;
-    note.className = "form-note " + (type || "");
+  /* ---------- Rückrufformular (/rueckruf) ----------
+     Ziel der QR-Codes auf den Visitenkarten. Pflicht sind nur Name und
+     Telefon; Versand wie beim Kontaktformular über Web3Forms.
+  */
+  var rrForm = document.getElementById("rueckrufformular");
+  var rrNote = document.getElementById("rr-note");
+  var rrFields = [
+    { id: "rr-name",    err: "err-rr-name",    msg: "Bitte geben Sie Ihren Namen an." },
+    { id: "rr-telefon", err: "err-rr-telefon", msg: "Bitte geben Sie eine Telefonnummer an, unter der ich Sie erreiche." }
+  ];
+
+  if (rrForm) {
+    var rrBtn = rrForm.querySelector("button[type=submit]");
+
+    rrFields.forEach(function (field) {
+      var input = document.getElementById(field.id);
+      if (!input) return;
+      input.addEventListener("input", function () {
+        if (fieldValid(field)) showFieldError(field, false);
+      });
+    });
+
+    rrForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var firstInvalid = null;
+      rrFields.forEach(function (field) {
+        var valid = fieldValid(field);
+        showFieldError(field, !valid);
+        if (!valid && !firstInvalid) firstInvalid = document.getElementById(field.id);
+      });
+
+      if (firstInvalid) {
+        setNote("Bitte prüfen Sie die markierten Felder.", "err", rrNote);
+        firstInvalid.focus();
+        return;
+      }
+
+      rrBtn.disabled = true;
+      setNote("Wird gesendet …", "", rrNote);
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(rrForm)))
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          rrBtn.disabled = false;
+          if (data.success) {
+            setNote("Vielen Dank – Ihre Rückrufbitte ist angekommen. Ich melde mich telefonisch bei Ihnen.", "ok", rrNote);
+            rrForm.reset();
+            applyKanal();
+          } else {
+            setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie an: 069 8600 7411.", "err", rrNote);
+          }
+        })
+        .catch(function () {
+          rrBtn.disabled = false;
+          setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie an: 069 8600 7411.", "err", rrNote);
+        });
+    });
+  }
+
+  /* ---------- Kanal der Visitenkarte ----------
+     Die QR-Codes auf den Visitenkarten hängen ?k=<Kennung> an die Adresse.
+     Die Kennung landet im versteckten Feld „kanal“ jedes Formulars und im
+     Betreff, und sie wird an interne Links weitergereicht, damit sie auch
+     nach einem Seitenwechsel (Leistungsseite → Kontaktformular) in der
+     Anfrage steht. Nichts wird im Browser gespeichert (kein Cookie, kein
+     Storage). Unbekannte Kennungen werden ignoriert.
+  */
+  var KANAELE = {
+    f: "Visitenkarte Friseur & Geschäfte",
+    b: "Visitenkarte Briefkasten",
+    p: "Visitenkarte Persönlich",
+    m: "Visitenkarte Multiplikator"
+  };
+  var kanalKey = (new URLSearchParams(window.location.search).get("k") || "").toLowerCase();
+  var kanal = Object.prototype.hasOwnProperty.call(KANAELE, kanalKey) ? KANAELE[kanalKey] : null;
+
+  function applyKanal() {
+    if (!kanal) return;
+    document.querySelectorAll('input[name="kanal"]').forEach(function (el) { el.value = kanal; });
+    document.querySelectorAll('input[name="subject"]').forEach(function (el) {
+      if (el.value.indexOf(kanal) === -1) el.value += " – " + kanal;
+    });
+  }
+
+  if (kanal) {
+    applyKanal();
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var url;
+      try { url = new URL(a.getAttribute("href"), window.location.href); } catch (err) { return; }
+      if (url.origin !== window.location.origin || url.searchParams.has("k")) return;
+      url.searchParams.set("k", kanalKey);
+      a.setAttribute("href", url.pathname + url.search + url.hash);
+    });
+  }
+
+  function setNote(msg, type, target) {
+    var el = target || note;
+    if (!el) return;
+    el.textContent = msg;
+    el.className = "form-note " + (type || "");
   }
 })();

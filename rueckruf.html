@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rückruf anfordern – Klare Kante Hausverwaltung</title>
+  <meta name="description" content="Rückruf anfordern: Name und Telefonnummer hinterlassen, Klare Kante Hausverwaltung ruft Sie zurück." />
+  <!-- Zielseite der QR-Codes auf den Visitenkarten. Bewusst nicht indexiert
+       und nicht in der sitemap.xml – sie ist kein Sucheinstieg. -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://klarekante-hausverwaltung.de/rueckruf" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="Zur Startseite">
+        <span class="brand-logo-plate">
+          <img class="brand-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" width="257" height="74" />
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navigation">
+        <a href="/">Zur Startseite</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap legal">
+    <p class="section-kicker">Rückruf</p>
+    <h1 class="legal-title">Ich rufe Sie zurück</h1>
+    <p>
+      Hinterlassen Sie Ihren Namen und Ihre Telefonnummer – ich melde mich persönlich bei Ihnen.
+      Kostenlos und unverbindlich. Lieber selbst anrufen? <a href="tel:+496986007411">069 8600 7411</a>
+    </p>
+
+    <!-- ==============================================================
+         RÜCKRUFFORMULAR
+         Versand über Web3Forms (api.web3forms.com) – siehe script.js.
+         Das Feld „kanal“ füllt script.js aus dem URL-Parameter ?k=
+         (Kennung der Visitenkarte). Es wird nichts im Browser gespeichert.
+         ============================================================== -->
+    <form class="contact-form" id="rueckrufformular" novalidate>
+      <input type="hidden" name="access_key" value="e74979e2-07bd-44d9-beed-bf163b020360" />
+      <input type="hidden" name="subject" value="Rückrufbitte über klarekante-hausverwaltung.de" />
+      <input type="hidden" name="kanal" value="Website" />
+      <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
+
+      <div class="field">
+        <label for="rr-name">Name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="rr-name" name="name" autocomplete="name" required aria-required="true" placeholder="Ihr Name" />
+        <span class="field-error" id="err-rr-name" hidden></span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="rr-telefon">Telefon <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="rr-telefon" name="telefon" autocomplete="tel" required aria-required="true" placeholder="Ihre Telefonnummer" />
+          <span class="field-error" id="err-rr-telefon" hidden></span>
+        </div>
+        <div class="field">
+          <label for="rr-plz">PLZ oder Stadtteil der Immobilie <span class="field-opt">(optional)</span></label>
+          <input type="text" id="rr-plz" name="plz_stadtteil" placeholder="z. B. 60385 oder Bornheim" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="rr-nachricht">Worum geht es? <span class="field-opt">(optional)</span></label>
+        <textarea id="rr-nachricht" name="nachricht" rows="3" placeholder="z. B. beste Zeit für den Rückruf oder kurz Ihr Anliegen"></textarea>
+      </div>
+
+      <p class="form-required-hint"><span class="req" aria-hidden="true">*</span> Pflichtfeld</p>
+
+      <button type="submit" class="btn btn-primary btn-block">Rückruf anfordern</button>
+
+      <p class="form-privacy-note">
+        Ihre Angaben verwende ich ausschließlich, um Sie zurückzurufen und Ihre Anfrage zu bearbeiten.
+        Weitere Informationen finden Sie in der
+        <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+
+      <p class="form-note" id="rr-note" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="legal-back"><a href="/">← Mehr über Klare Kante Hausverwaltung</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p>© <span id="jahr">2026</span> Klare Kante Hausverwaltung</p>
+      <p class="footer-made"><a href="/impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz" style="color:inherit">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
