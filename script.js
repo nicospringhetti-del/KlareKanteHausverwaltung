@@ -176,6 +176,9 @@
           if (data.success) {
             setNote("Vielen Dank für Ihre Anfrage. Wir melden uns in der Regel innerhalb von 24 Stunden an Werktagen bei Ihnen.", "ok");
             form.reset();
+            /* C1 – nur hier, nach bestätigtem Erfolg von Web3Forms. Nicht im
+               Fehlerzweig, nicht im catch, nicht beim Seitenaufruf. */
+            if (window.kkTrack) window.kkTrack("form");
           } else {
             setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie uns an.", "err");
           }
@@ -286,6 +289,21 @@
       a.setAttribute("href", url.pathname + url.search + url.hash);
     });
   }
+
+  /* ---------- Sekundäre Conversions (nur Beobachtung) ----------
+     C3 und C4 sind Klicks, keine Gespräche. kkTrack sendet nur, wenn die
+     Einwilligung vorliegt; ohne Einwilligung passiert hier nichts.
+  */
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
+    a.addEventListener("click", function () {
+      if (window.kkTrack) window.kkTrack("tel");
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="mailto:"]'), function (a) {
+    a.addEventListener("click", function () {
+      if (window.kkTrack) window.kkTrack("mail");
+    });
+  });
 
   function setNote(msg, type, target) {
     var el = target || note;

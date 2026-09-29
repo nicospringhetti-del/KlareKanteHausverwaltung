@@ -555,6 +555,7 @@
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutz</a>
         <a href="support/">Support</a>
+        <a href="#" data-consent-open>Cookie-Einstellungen</a>
       </nav>
     </div>
     <div class="wrap footer-bottom">
@@ -562,6 +563,18 @@
     </div>
   </footer>
 
+  <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Einwilligung zur Werbemessung" hidden>
+    <p>
+      Wir möchten messen, ob Anfragen über unsere Google-Anzeigen zustande kommen. Dafür setzt
+      Google Cookies. Das geschieht nur mit Ihrer Einwilligung, die Sie jederzeit widerrufen
+      können. <a href="/datenschutz#google-ads">Details in der Datenschutzerklärung</a>
+    </p>
+    <div class="consent-actions">
+      <button type="button" id="consent-decline" class="btn btn-ghost">Ablehnen</button>
+      <button type="button" id="consent-accept" class="btn btn-ghost">Akzeptieren</button>
+    </div>
+  </div>
+  <script src="consent.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

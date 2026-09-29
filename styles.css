@@ -600,3 +600,29 @@ main:focus { outline: none; }
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal, .js .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Einwilligungsbanner Google-Ads-Messung ----------
+   Beide Schaltflächen absichtlich gleich gestaltet: „Akzeptieren" wird
+   nicht hervorgehoben. */
+.consent-banner {
+  position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 1000;
+  max-width: 40rem; margin-inline: auto;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper); color: var(--ink);
+  border: 1.5px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--sage);
+  font-family: var(--font-body);
+}
+.consent-banner[hidden] { display: none; }
+.consent-banner p { margin: 0; font-size: 0.92rem; line-height: 1.55; }
+.consent-banner a { color: var(--sage-deep); }
+.consent-actions {
+  display: flex; gap: 0.75rem; justify-content: flex-end;
+  margin-top: 1rem; flex-wrap: wrap;
+}
+.consent-actions .btn { padding: 0.7rem 1.4rem; font-size: 0.9rem; }
+
+@media (max-width: 760px) {
+  .consent-banner { padding: 1rem 1.15rem; }
+  .consent-actions { flex-direction: column; }
+}
