@@ -1,38 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  lastmod = Datum der letzten inhaltlichen Änderung der jeweiligen Seite.
+  Bei jeder Inhaltsänderung mitpflegen, sonst läuft der Wert wieder aus dem
+  Takt (Befund SEO-Audit 07.10.2026, Abschnitt B1/P1).
+  Nicht enthalten: /impressum (indexierbar, aber ohne Suchrelevanz),
+  /datenschutz und /rueckruf (beide bewusst noindex).
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://klarekante-hausverwaltung.de/</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-ostend</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-bornheim</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-nordend</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://klarekante-hausverwaltung.de/hausverwaltung-wechseln</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://klarekante-hausverwaltung.de/weg-verwaltung-kosten</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://klarekante-hausverwaltung.de/verwaltungsbeirat-weg</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://klarekante-hausverwaltung.de/weg-jahresabrechnung</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
