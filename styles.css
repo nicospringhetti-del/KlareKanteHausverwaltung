@@ -147,6 +147,9 @@ main:focus { outline: none; }
 .nav a {
   text-decoration: none; font-size: 0.9rem; font-weight: 500;
   position: relative; padding: 0.25rem 0; color: var(--ink);
+  /* Mit zwei Leistungseinstiegen wird die Leiste laenger; ohne nowrap
+     brechen "WEG-Verwaltung" und "Über uns" in zwei Zeilen um. */
+  white-space: nowrap;
 }
 .nav a:not(.nav-cta)::after {
   content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0;
@@ -407,8 +410,14 @@ main:focus { outline: none; }
    on-screen, Badge weder verzerren noch einfärben. */
 .portal-app-store { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
 .portal-app-store-label { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+.portal-app-store-text { font-size: 0.95rem; max-width: 46ch; }
+.portal-app-store-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
 .portal-app-store-badge { display: inline-block; line-height: 0; }
 .portal-app-store-badge img { display: block; height: 44px; width: auto; }
+/* Das Google-Play-Badge bringt oben und unten einen vorgeschriebenen Rand mit.
+   Groessere Hoehe, damit die Schrift neben dem App-Store-Badge gleich gross wirkt. */
+.portal-app-store-badge.is-play img { height: 55px; }
+.portal-app-store-note { font-size: 0.9rem; color: var(--ink-soft); }
 
 /* Visual: Phone-Mockup + QR-Code */
 .portal-visual { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
@@ -478,6 +487,9 @@ main:focus { outline: none; }
 .contact-form { background: var(--paper); color: var(--ink); padding: clamp(1.75rem, 3vw, 2.5rem); border: 1.5px solid var(--ink); box-shadow: 12px 12px 0 var(--sage); }
 .hidden-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .field { margin-bottom: 1.1rem; display: grid; gap: 0.4rem; }
+/* Bedingte Formularfelder: .field und .field-row setzen display, deshalb
+   muss [hidden] hier ausdruecklich gewinnen (siehe script.js). */
+.field[hidden], .field-row[hidden] { display: none; }
 .field label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
 .field .req { color: var(--clay-deep); }
 .field .field-opt { text-transform: none; letter-spacing: 0; color: rgba(85,81,63,0.7); font-size: 0.68rem; }
