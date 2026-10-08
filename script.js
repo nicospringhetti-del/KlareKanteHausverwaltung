@@ -97,10 +97,11 @@
 
   // Pflichtfelder: Feld-ID -> Fehlermeldung + zugehörige Fehler-Span-ID
   var requiredFields = [
+    { id: "leistungsart", err: "err-leistungsart", msg: "Bitte wählen Sie, worum es geht." },
     { id: "name",      err: "err-name",      msg: "Bitte geben Sie Ihren Namen an." },
     { id: "email",     err: "err-email",     msg: "Bitte geben Sie eine gültige E-Mail-Adresse an." },
     { id: "plz",       err: "err-plz",       msg: "Bitte geben Sie PLZ oder Stadtteil der Immobilie an." },
-    { id: "einheiten", err: "err-einheiten", msg: "Bitte wählen Sie die Anzahl der Einheiten." },
+    { id: "einheiten", err: "err-einheiten", msg: "Bitte wählen Sie die Anzahl aus." },
     { id: "nachricht", err: "err-nachricht", msg: "Bitte beschreiben Sie kurz Ihr Anliegen." }
   ];
 
@@ -135,6 +136,39 @@
     return true;
   }
 
+  /* ---------- Bedingte Formularfelder ----------
+     Felder mit data-fuer werden nur bei passender Leistungsart angezeigt.
+     Ausgeblendete Felder werden zusaetzlich disabled – dadurch landen sie
+     nicht in der Anfrage-E-Mail und erzeugen dort keine leeren Zeilen.
+     Ohne JavaScript bleiben alle Felder sichtbar und absendbar.
+  */
+  var leistungsart = document.getElementById("leistungsart");
+  var labelEinheiten = document.getElementById("label-einheiten");
+
+  function bedingteFelder() {
+    if (!form || !leistungsart) return;
+    var wahl = leistungsart.value;
+    Array.prototype.forEach.call(form.querySelectorAll("[data-fuer]"), function (feld) {
+      /* Solange keine Leistungsart gewaehlt ist, bleiben die bedingten Felder
+         aus – das Formular startet kurz und waechst erst mit der Auswahl. */
+      var passt = !!wahl && feld.getAttribute("data-fuer").indexOf(wahl) !== -1;
+      feld.hidden = !passt;
+      Array.prototype.forEach.call(feld.querySelectorAll("input, select, textarea"), function (el) {
+        el.disabled = !passt;
+        if (!passt) el.value = "";
+      });
+    });
+    if (labelEinheiten) {
+      labelEinheiten.textContent =
+        wahl === "Mietverwaltung Mehrfamilienhaus" ? "Wohnungen" : "Einheiten";
+    }
+  }
+
+  if (leistungsart) {
+    leistungsart.addEventListener("change", bedingteFelder);
+    bedingteFelder();
+  }
+
   if (form) {
     // Fehlerzustand aufheben, sobald der Nutzer ein Feld korrigiert
     requiredFields.forEach(function (field) {
@@ -146,8 +180,16 @@
       });
     });
 
+    /* Laeuft ein Versand, wird ein zweiter Submit verworfen. Der deaktivierte
+       Button verhindert das zwar schon, aber nur, solange der Submit ueber den
+       Button kommt – so zaehlt C1 unter keinen Umstaenden doppelt. */
+    var versandLaeuft = false;
+    /* Betreff vor der ersten Ergaenzung, inklusive Kanal-Kennung. */
+    var subjectBasis = null;
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (versandLaeuft) return;
 
       var firstInvalid = null;
       requiredFields.forEach(function (field) {
@@ -162,6 +204,20 @@
         return;
       }
 
+      /* Leistungsart in den Betreff, damit die Anfrage schon im Postfach
+         zuordenbar ist. Erst hier, damit die Kanal-Kennung aus applyKanal()
+         erhalten bleibt. Der Betreff wird jedes Mal aus dem gemerkten Stand
+         neu gebildet – form.reset() setzt versteckte Felder nicht zurueck,
+         sonst wuerde sich die Leistungsart bei einer zweiten Anfrage in
+         derselben Sitzung aufaddieren. */
+      var subjectFeld = form.querySelector('input[name="subject"]');
+      if (subjectFeld) {
+        if (subjectBasis === null) subjectBasis = subjectFeld.value;
+        subjectFeld.value = subjectBasis +
+          (leistungsart && leistungsart.value ? " – " + leistungsart.value : "");
+      }
+
+      versandLaeuft = true;
       submitBtn.disabled = true;
       setNote("Wird gesendet …", "");
 
@@ -172,10 +228,12 @@
       })
         .then(function (res) { return res.json(); })
         .then(function (data) {
+          versandLaeuft = false;
           submitBtn.disabled = false;
           if (data.success) {
             setNote("Vielen Dank für Ihre Anfrage. Wir melden uns in der Regel innerhalb von 24 Stunden an Werktagen bei Ihnen.", "ok");
             form.reset();
+            bedingteFelder();
             /* C1 – nur hier, nach bestätigtem Erfolg von Web3Forms. Nicht im
                Fehlerzweig, nicht im catch, nicht beim Seitenaufruf. */
             if (window.kkTrack) window.kkTrack("form");
@@ -184,6 +242,7 @@
           }
         })
         .catch(function () {
+          versandLaeuft = false;
           submitBtn.disabled = false;
           setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie uns an.", "err");
         });
