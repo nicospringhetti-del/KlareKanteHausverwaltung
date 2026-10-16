@@ -226,6 +226,8 @@ main:focus { outline: none; }
 .hero-lead-support { font-size: clamp(0.98rem, 0.95rem + 0.2vw, 1.08rem); max-width: 46ch; color: var(--ink-soft); margin-bottom: 2.25rem; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-hint { margin-top: 1rem; font-size: 0.92rem; color: var(--ink-soft); }
+.hero-hint a { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; }
 
 /* Buttons */
 .btn {
