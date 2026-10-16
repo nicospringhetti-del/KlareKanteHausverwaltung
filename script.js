@@ -101,8 +101,7 @@
     { id: "name",      err: "err-name",      msg: "Bitte geben Sie Ihren Namen an." },
     { id: "email",     err: "err-email",     msg: "Bitte geben Sie eine gültige E-Mail-Adresse an." },
     { id: "plz",       err: "err-plz",       msg: "Bitte geben Sie PLZ oder Stadtteil der Immobilie an." },
-    { id: "einheiten", err: "err-einheiten", msg: "Bitte wählen Sie die Anzahl aus." },
-    { id: "nachricht", err: "err-nachricht", msg: "Bitte beschreiben Sie kurz Ihr Anliegen." }
+    { id: "einheiten", err: "err-einheiten", msg: "Bitte wählen Sie die Anzahl aus." }
   ];
 
   function showFieldError(field, show) {
