@@ -4,6 +4,10 @@
 (function () {
   "use strict";
 
+  function trackAnalytics(name) {
+    try { if (window.kkAnalytics) window.kkAnalytics(name); } catch (e) {}
+  }
+
   /* ---------- Jahr im Footer automatisch setzen ---------- */
   var jahr = document.getElementById("jahr");
   if (jahr) jahr.textContent = new Date().getFullYear();
@@ -225,14 +229,18 @@
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(form)))
       })
-        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Formularversand fehlgeschlagen");
+          return res.json();
+        })
         .then(function (data) {
           versandLaeuft = false;
           submitBtn.disabled = false;
-          if (data.success) {
+          if (data.success === true) {
             setNote("Vielen Dank für Ihre Anfrage. Wir melden uns in der Regel innerhalb von 24 Stunden an Werktagen bei Ihnen.", "ok");
             form.reset();
             bedingteFelder();
+            trackAnalytics("Anfrage_Gesendet");
             /* C1 – nur hier, nach bestätigtem Erfolg von Web3Forms. Nicht im
                Fehlerzweig, nicht im catch, nicht beim Seitenaufruf. */
             if (window.kkTrack) window.kkTrack("form");
@@ -261,6 +269,7 @@
 
   if (rrForm) {
     var rrBtn = rrForm.querySelector("button[type=submit]");
+    var rrVersandLaeuft = false;
 
     rrFields.forEach(function (field) {
       var input = document.getElementById(field.id);
@@ -272,6 +281,7 @@
 
     rrForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (rrVersandLaeuft) return;
 
       var firstInvalid = null;
       rrFields.forEach(function (field) {
@@ -286,6 +296,7 @@
         return;
       }
 
+      rrVersandLaeuft = true;
       rrBtn.disabled = true;
       setNote("Wird gesendet …", "", rrNote);
 
@@ -294,18 +305,24 @@
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(rrForm)))
       })
-        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Formularversand fehlgeschlagen");
+          return res.json();
+        })
         .then(function (data) {
+          rrVersandLaeuft = false;
           rrBtn.disabled = false;
-          if (data.success) {
+          if (data.success === true) {
             setNote("Vielen Dank – Ihre Rückrufbitte ist angekommen. Ich melde mich telefonisch bei Ihnen.", "ok", rrNote);
             rrForm.reset();
             applyKanal();
+            trackAnalytics("Rueckruf_Gesendet");
           } else {
             setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie an: 069 8600 7411.", "err", rrNote);
           }
         })
         .catch(function () {
+          rrVersandLaeuft = false;
           rrBtn.disabled = false;
           setNote("Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie an: 069 8600 7411.", "err", rrNote);
         });
