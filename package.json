@@ -1,0 +1,6 @@
+{
+  "name": "klare-kante-website-checks",
+  "private": true,
+  "scripts": { "test": "node --test tests/analytics.test.cjs" },
+  "devDependencies": { "playwright": "1.63.0" }
+}
