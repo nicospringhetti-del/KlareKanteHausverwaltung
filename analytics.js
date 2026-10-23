@@ -10,7 +10,10 @@
     "/weg-jahresabrechnung", "/weg-verwaltung-kosten", "/weg-verwaltung-frankfurt",
     "/weg-verwaltung-frankfurt-bornheim", "/weg-verwaltung-frankfurt-nordend",
     "/weg-verwaltung-frankfurt-ostend"];
-  var CHANNELS = { f: "friseur-geschaefte", b: "briefkasten", p: "persoenlich", m: "multiplikator" };
+  var CHANNELS = { f: "friseur-geschaefte", b: "briefkasten", p: "persoenlich", m: "multiplikator",
+    w: "verwalterwechsel-a6" };
+  /* Gedruckte Quelle je Kennung; ohne Eintrag gilt „visitenkarte“. */
+  var SOURCES = { w: "flyer" };
   var EVENTS = ["Telefon_Klick", "Email_Klick", "Formular_Begonnen", "Anfrage_Gesendet", "Rueckruf_Gesendet"];
 
   function publicUrl(value) {
@@ -25,7 +28,7 @@
       var key = (url.searchParams.get("k") || "").toLowerCase();
       var channel = Object.prototype.hasOwnProperty.call(CHANNELS, key) ? CHANNELS[key] : null;
       return "https://" + DOMAIN + path + (channel ?
-        "?utm_source=visitenkarte&utm_medium=qr&utm_campaign=" + channel : "");
+        "?utm_source=" + (SOURCES[key] || "visitenkarte") + "&utm_medium=qr&utm_campaign=" + channel : "");
     } catch (e) { return null; }
   }
 

@@ -55,6 +55,7 @@ Plausible entstehen feste Kampagnenwerte: `utm_source=visitenkarte`, `utm_medium
 | `k=f` | `friseur-geschaefte` |
 | `k=p` | `persoenlich` |
 | `k=m` | `multiplikator` |
+| `k=w` | `verwalterwechsel-a6` (Quelle `flyer` statt `visitenkarte`) |
 
 `/rueckruf?k=b` und bereits gedruckte QR-Codes funktionieren weiter. Unbekannte Kartenwerte
 werden verworfen. Die einzige benutzerdefinierte Eigenschaft ist `formular` mit festem Wert

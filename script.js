@@ -329,8 +329,8 @@
     });
   }
 
-  /* ---------- Kanal der Visitenkarte ----------
-     Die QR-Codes auf den Visitenkarten hängen ?k=<Kennung> an die Adresse.
+  /* ---------- Kanal der Visitenkarte / des Flyers ----------
+     Die QR-Codes auf Visitenkarten und Flyern hängen ?k=<Kennung> an die Adresse.
      Die Kennung landet im versteckten Feld „kanal“ jedes Formulars und im
      Betreff, und sie wird an interne Links weitergereicht, damit sie auch
      nach einem Seitenwechsel (Leistungsseite → Kontaktformular) in der
@@ -341,7 +341,8 @@
     f: "Visitenkarte Friseur & Geschäfte",
     b: "Visitenkarte Briefkasten",
     p: "Visitenkarte Persönlich",
-    m: "Visitenkarte Multiplikator"
+    m: "Visitenkarte Multiplikator",
+    w: "Flyer A6 Verwalterwechsel"
   };
   var kanalKey = (new URLSearchParams(window.location.search).get("k") || "").toLowerCase();
   var kanal = Object.prototype.hasOwnProperty.call(KANAELE, kanalKey) ? KANAELE[kanalKey] : null;
