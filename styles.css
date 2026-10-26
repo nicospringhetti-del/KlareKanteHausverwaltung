@@ -240,6 +240,11 @@ main:focus { outline: none; }
 .btn-primary:hover { background: var(--sage-deep); border-color: var(--sage-deep); transform: translate(-3px,-3px); box-shadow: 6px 6px 0 var(--ink); }
 .btn-ghost { background: transparent; color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--paper); transform: translate(-3px,-3px); box-shadow: 6px 6px 0 var(--sage); }
+
+/* Sekundaerer Knopf im dunklen Kontaktbereich: heller Rahmen statt fast
+   schwarzer Schrift auf dunkelblauem Grund (Kontrast war 1,1:1). */
+.contact .btn-ghost { color: var(--paper); border-color: var(--paper); }
+.contact .btn-ghost:hover { background: var(--paper); color: var(--ink); box-shadow: 6px 6px 0 var(--sage); }
 .btn-block { width: 100%; margin-top: 0.5rem; }
 
 /* Hero-Visual: abstrakte Fassade */

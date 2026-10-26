@@ -153,7 +153,7 @@
         <a href="/#ueber">Über uns</a>
         <a href="/#faq">FAQ</a>
         <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="nav-portal">Kundenportal</a>
-        <a href="/#kontakt" class="nav-cta">Kontakt</a>
+        <a href="#kontakt-cta" class="nav-cta">Kontakt</a>
       </nav>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
@@ -172,7 +172,7 @@
       <a href="/#ueber">Über uns</a>
       <a href="/#faq">FAQ</a>
       <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="mobile-nav-portal">Kundenportal</a>
-      <a href="/#kontakt">Kontakt</a>
+      <a href="#kontakt-cta">Kontakt</a>
     </nav>
   </header>
 
@@ -199,7 +199,7 @@
             bemessen – die konkrete Zahl für Ihre WEG nennen wir im Angebot.
           </p>
           <div class="hero-actions reveal" data-delay="3">
-            <a href="/#kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a>
+            <a href="#kontakt-cta" class="btn btn-primary">Kostenloses Erstgespräch</a>
             <a href="tel:+496986007411" class="btn btn-ghost">069 8600 7411</a>
           </div>
         </div>
@@ -369,7 +369,7 @@
             steht unter <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>.
           </p>
           <div class="hero-actions">
-            <a href="/#kontakt" class="btn btn-primary">Angebot für Ihre WEG anfragen</a>
+            <a href="#kontakt-cta" class="btn btn-primary">Angebot für Ihre WEG anfragen</a>
           </div>
         </div>
       </div>
@@ -481,10 +481,152 @@
           </ul>
 
           <div class="hero-actions">
-            <a href="/#kontakt" class="btn btn-primary">Zum Kontaktformular</a>
             <a href="/weg-verwaltung-frankfurt" class="btn btn-ghost">WEG-Verwaltung Frankfurt</a>
           </div>
         </div>
+
+        <!-- ==============================================================
+             KONTAKTFORMULAR
+             Versand über Web3Forms (api.web3forms.com) – siehe script.js.
+             Die Feldnamen (name-Attribute) erscheinen so in der
+             Anfrage-E-Mail. Pflichtfelder sind zusätzlich zur nativen
+             HTML-Validierung in script.js abgesichert (feldbezogene
+             Fehlermeldungen, Fokussprung).
+             ============================================================== -->
+        <form class="contact-form reveal" id="kontaktformular" novalidate>
+          <input type="hidden" name="access_key" value="e74979e2-07bd-44d9-beed-bf163b020360" />
+          <input type="hidden" name="subject" value="Neue Anfrage über klarekante-hausverwaltung.de" />
+          <input type="hidden" name="kanal" value="Website" />
+          <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Steuert, welche Felder unten eingeblendet werden (siehe script.js).
+               Ausgeblendete Felder werden zusaetzlich disabled und landen
+               dadurch nicht in der Anfrage-E-Mail. -->
+          <div class="field">
+            <label for="leistungsart">Gewünschte Leistung <span class="req" aria-hidden="true">*</span></label>
+            <select id="leistungsart" name="leistungsart" required aria-required="true">
+              <option value="" selected disabled>Bitte wählen</option>
+              <option value="WEG-Verwaltung">WEG-Verwaltung (Eigentümergemeinschaft)</option>
+              <option value="Mietverwaltung Mehrfamilienhaus">Mietverwaltung – ganzes Mehrfamilienhaus</option>
+              <option value="Verwaltung einzelner Eigentumswohnungen">Verwaltung einzelner Eigentumswohnungen</option>
+              <option value="Noch unklar">Noch unklar – bitte beraten Sie mich</option>
+            </select>
+            <span class="field-error" id="err-leistungsart" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" placeholder="Ihr Name" />
+            <span class="field-error" id="err-name" hidden></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="ihre@email.de" />
+              <span class="field-error" id="err-email" hidden></span>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span class="field-opt">(optional)</span></label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Für einen Rückruf" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="plz">PLZ oder Stadtteil der Immobilie <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="plz" name="plz_stadtteil" required aria-required="true" placeholder="z. B. 60385 oder Bornheim" />
+              <span class="field-error" id="err-plz" hidden></span>
+            </div>
+            <div class="field">
+              <label for="einheiten">Anzahl der <span id="label-einheiten">Einheiten</span> <span class="req" aria-hidden="true">*</span></label>
+              <select id="einheiten" name="anzahl_einheiten" required aria-required="true">
+                <option value="" selected disabled>Bitte wählen</option>
+                <option value="1–10">1–10</option>
+                <option value="11–25">11–25</option>
+                <option value="26–50">26–50</option>
+                <option value="über 50">über 50</option>
+              </select>
+              <span class="field-error" id="err-einheiten" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-fuer="WEG-Verwaltung Verwaltung einzelner Eigentumswohnungen Noch unklar">
+              <label for="status">Aktueller Verwaltungsstatus <span class="field-opt">(optional)</span></label>
+              <select id="status" name="verwaltungsstatus">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Verwalterwechsel geplant">Verwalterwechsel geplant</option>
+                <option value="Verwalter gekündigt">Verwalter gekündigt</option>
+                <option value="Neubau / Erstbestellung">Neubau / Erstbestellung</option>
+                <option value="Erste Orientierung">Erste Orientierung</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zeitpunkt">Gewünschter Übernahmezeitpunkt <span class="field-opt">(optional)</span></label>
+              <select id="zeitpunkt" name="uebernahmezeitpunkt">
+                <option value="" selected>Bitte wählen</option>
+                <option value="So bald wie möglich">So bald wie möglich</option>
+                <option value="In den nächsten 3 Monaten">In den nächsten 3 Monaten</option>
+                <option value="In 3–6 Monaten">In 3–6 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <div class="field">
+              <label for="eigentuemer">Eigentümerstruktur <span class="field-opt">(optional)</span></label>
+              <select id="eigentuemer" name="eigentuemerstruktur">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Einzelner Eigentümer">Einzelner Eigentümer</option>
+                <option value="Eigentümerfamilie / Erbengemeinschaft">Eigentümerfamilie / Erbengemeinschaft</option>
+                <option value="Gesellschaft (z. B. GbR, GmbH)">Gesellschaft (z. B. GbR, GmbH)</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="leerstand">Aktueller Leerstand <span class="field-opt">(optional)</span></label>
+              <select id="leerstand" name="leerstand">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Kein Leerstand">Kein Leerstand</option>
+                <option value="1 Wohnung">1 Wohnung</option>
+                <option value="2–3 Wohnungen">2–3 Wohnungen</option>
+                <option value="Mehr als 3 Wohnungen">Mehr als 3 Wohnungen</option>
+                <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <label for="mieterwechsel">Steht ein Mieterwechsel an? <span class="field-opt">(optional)</span></label>
+            <select id="mieterwechsel" name="mieterwechsel">
+              <option value="" selected>Bitte wählen</option>
+              <option value="Ja, kurzfristig">Ja, kurzfristig</option>
+              <option value="Ja, im Lauf des Jahres">Ja, im Lauf des Jahres</option>
+              <option value="Derzeit nicht absehbar">Derzeit nicht absehbar</option>
+              <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nachricht">Nachricht <span class="field-opt">(optional)</span></label>
+            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Optional: Beschreiben Sie kurz Ihr Anliegen – z. B. Lage der Immobilie, aktuelle Situation und was Sie sich von uns wünschen."></textarea>
+          </div>
+
+          <p class="form-required-hint"><span class="req" aria-hidden="true">*</span> Pflichtfeld</p>
+
+          <button type="submit" class="btn btn-primary btn-block">Unverbindliches Erstgespräch anfragen</button>
+
+          <p class="form-privacy-note">
+            Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+            Weitere Informationen finden Sie in unserer
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </p>
+
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
 
@@ -510,7 +652,7 @@
         <a href="/verwaltungsbeirat-weg">Verwaltungsbeirat der WEG</a>
         <a href="/weg-jahresabrechnung">Jahresabrechnung der WEG</a>
         <a href="/#leistungen">Leistungen</a>
-        <a href="/#kontakt">Kontakt</a>
+        <a href="#kontakt-cta">Kontakt</a>
       </nav>
 
       <nav class="footer-legal" aria-label="Rechtliches">
