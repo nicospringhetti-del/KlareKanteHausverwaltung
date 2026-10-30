@@ -128,13 +128,13 @@ test('Local/preview/staging/portal/unknown paths and nonstandard ports load no P
 });
 
 test('www works; QR keys become only fixed campaign labels, unknown keys disappear', async () => {
-  for (const [key, label] of [['b', 'briefkasten'], ['f', 'friseur-geschaefte'], ['p', 'persoenlich'], ['m', 'multiplikator'], ['PRIVATE', null]]) {
+  for (const [key, label] of [['b', 'briefkasten'], ['f', 'friseur-geschaefte'], ['p', 'persoenlich'], ['m', 'multiplikator'], ['w', 'verwalterwechsel-a6'], ['PRIVATE', null]]) {
     const s = await open('https://www.klarekante-hausverwaltung.de/rueckruf?k=' + key + '&utm_campaign=PRIVATE');
     try {
       await s.wait('pageview');
       const u = new URL(s.events.find(e => e.n === 'pageview').u);
       assert.equal(u.searchParams.get('utm_campaign'), label);
-      assert.equal(u.searchParams.get('utm_source'), label ? 'visitenkarte' : null);
+      assert.equal(u.searchParams.get('utm_source'), label ? (key === 'w' ? 'flyer' : 'visitenkarte') : null);
       assert.ok(!u.searchParams.has('k')); privateSafe(s);
     } finally { await s.close(); }
   }
