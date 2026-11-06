@@ -96,7 +96,7 @@ function privateSafe(state) {
   }
 }
 
-test('All 15 HTML documents: one head include and one pageview, no Google before consent', async () => {
+test('All 20 HTML documents: one head include and one pageview, no Google before consent', async () => {
   for (const file of pages) {
     const html = fs.readFileSync(path.join(ROOT, file), 'utf8');
     assert.equal((html.match(/src="\/analytics\.js"/g) || []).length, 1, file);

@@ -9,7 +9,9 @@
     "/hausverwaltung-wechseln", "/mietverwaltung-frankfurt", "/verwaltungsbeirat-weg",
     "/weg-jahresabrechnung", "/weg-verwaltung-kosten", "/weg-verwaltung-frankfurt",
     "/weg-verwaltung-frankfurt-bornheim", "/weg-verwaltung-frankfurt-nordend",
-    "/weg-verwaltung-frankfurt-ostend"];
+    "/weg-verwaltung-frankfurt-ostend", "/weg-verwaltung-frankfurt-sachsenhausen",
+    "/weg-verwaltung-frankfurt-westend", "/weg-verwaltung-frankfurt-bockenheim",
+    "/weg-verwaltung-frankfurt-innenstadt", "/weg-verwaltung-frankfurt-oberrad"];
   var CHANNELS = { f: "friseur-geschaefte", b: "briefkasten", p: "persoenlich", m: "multiplikator" };
   var EVENTS = ["Telefon_Klick", "Email_Klick", "Formular_Begonnen", "Anfrage_Gesendet", "Rueckruf_Gesendet"];
 
