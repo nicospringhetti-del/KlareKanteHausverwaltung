@@ -1,0 +1,654 @@
+/* Vorlage fuer die Stadtteilseiten.
+   Abgeleitet aus der handgeschriebenen Seite weg-verwaltung-frankfurt-bockenheim.html.
+   Alles, was je Stadtteil anders ist, kommt aus tools/stadtteil-daten.cjs.
+   Die acht bereits bestehenden Seiten werden NICHT ueberschrieben. */
+"use strict";
+
+const BASE = "https://klarekante-hausverwaltung.de";
+
+/* JSON-Text sicher einbetten (Anfuehrungszeichen, Umbrueche). */
+const j = (s) => JSON.stringify(String(s)).slice(1, -1);
+
+function faqJson(faq, indent) {
+  const pad = " ".repeat(indent);
+  return faq
+    .map(
+      (f) => `${pad}{
+${pad}  "@type": "Question",
+${pad}  "name": "${j(f.q)}",
+${pad}  "acceptedAnswer": {
+${pad}    "@type": "Answer",
+${pad}    "text": "${j(f.a)}"
+${pad}  }
+${pad}}`
+    )
+    .join(",\n");
+}
+
+function faqHtml(faq) {
+  return faq
+    .map(
+      (f) => `          <details class="faq-item">
+            <summary>${f.q}</summary>
+            <p>
+              ${f.a}
+            </p>
+          </details>`
+    )
+    .join("\n\n");
+}
+
+function bullets(list) {
+  const delays = ["", ' data-delay="1"', ' data-delay="2"', "", ' data-delay="1"'];
+  return list
+    .map(
+      (t, i) =>
+        `          <li class="reveal"${delays[i] || ""}><span class="a-mark" aria-hidden="true"></span>${t}</li>`
+    )
+    .join("\n");
+}
+
+function cards(list) {
+  return list
+    .map(
+      (c, i) => `          <article class="card reveal"${i ? ` data-delay="${i}"` : ""}>
+            <span class="card-num">0${i + 1}</span>
+            <h3>${c.h}</h3>
+            <p>${c.p}</p>
+          </article>`
+    )
+    .join("\n\n");
+}
+
+function nachbarLinks(nachbarn) {
+  const parts = nachbarn.map(
+    (n) => `<a href="/weg-verwaltung-frankfurt-${n.slug}">WEG-Verwaltung ${n.label}</a>`
+  );
+  return parts.slice(0, -1).join(",\n            ") + " und\n            " + parts[parts.length - 1];
+}
+
+function render(d) {
+  const url = `${BASE}/weg-verwaltung-frankfurt-${d.slug}`;
+  const titel = `WEG-Verwaltung Frankfurt-${d.ort} | Klare Kante`;
+  const h1Ort = d.h1Ort || `Frankfurt-${d.ort}`;
+
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====================================================================
+       SEO / META  ·  Stadtteilseite ${d.ort}
+       Rollenverteilung: Diese Seite traegt „WEG-Verwaltung Frankfurt-${d.ort}“,
+       „WEG-Verwalter ${d.ort}“ und „Hausverwaltung ${d.ort}“.
+       Die fachliche Tiefe liegt auf /weg-verwaltung-frankfurt, die breiten
+       Ortsbegriffe auf der Startseite. Inhaltlicher Eigenwert dieser Seite:
+       ${d.eigenwert}
+       Bewusst KEINE Kopie der Frankfurt- oder einer anderen Stadtteilseite.
+       Erzeugt aus tools/stadtteil-daten.cjs – Aenderungen dort vornehmen.
+       ==================================================================== -->
+  <title>${titel}</title>
+  <meta name="description" content="${d.metaDesc}" />
+  <link rel="canonical" href="${url}" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#2e2a63" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="${titel}" />
+  <meta property="og:description" content="${d.metaDesc}" />
+  <meta property="og:image" content="${BASE}/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung Frankfurt-${d.ort}" />
+  <meta property="og:url" content="${url}" />
+  <meta property="og:site_name" content="Klare Kante Hausverwaltung" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${titel}" />
+  <meta name="twitter:description" content="${d.metaDesc}" />
+  <meta name="twitter:image" content="${BASE}/og-image.png" />
+  <meta name="twitter:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung Frankfurt-${d.ort}" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <script>document.documentElement.classList.add("js");</script>
+
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Strukturierte Daten: Breadcrumb + Service + WebPage/FAQPage.
+       Der Betrieb (#business) ist auf der Startseite definiert und wird hier
+       nur per @id referenziert. Alle FAQ-Antworten stehen sichtbar auf der
+       Seite. Keine erfundenen Angaben. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "${url}#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "${BASE}/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "WEG-Verwaltung Frankfurt",
+            "item": "${BASE}/weg-verwaltung-frankfurt"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "${d.ort}",
+            "item": "${url}"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "${url}#service",
+        "name": "WEG-Verwaltung Frankfurt-${d.ort}",
+        "serviceType": "WEG-Verwaltung (Wohnungseigentumsverwaltung)",
+        "provider": {
+          "@id": "${BASE}/#business"
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Frankfurt-${d.ort}",
+          "containedInPlace": {
+            "@type": "City",
+            "name": "Frankfurt am Main"
+          }
+        },
+        "description": "WEG-Verwaltung für Wohnungseigentümergemeinschaften in Frankfurt-${d.ort} – mit festem Ansprechpartner, klaren Abläufen und digitalem Eigentümerportal."
+      },
+      {
+        "@type": [
+          "WebPage",
+          "FAQPage"
+        ],
+        "@id": "${url}#webpage",
+        "url": "${url}",
+        "name": "${titel}",
+        "description": "${j(d.metaDesc)}",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "${BASE}/#website"
+        },
+        "about": {
+          "@id": "${BASE}/#business"
+        },
+        "mainContentOfPage": {
+          "@id": "${url}#service"
+        },
+        "breadcrumb": {
+          "@id": "${url}#breadcrumb"
+        },
+        "mainEntity": [
+${faqJson(d.faq, 10)}
+        ]
+      }
+    ]
+  }
+  </script>
+  <script src="/analytics.js"></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="Klare Kante Hausverwaltung – Startseite">
+        <span class="brand-logo-plate">
+          <img class="brand-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" width="257" height="74" fetchpriority="high" />
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung</a>
+        <a href="/mietverwaltung-frankfurt">Mietverwaltung</a>
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/#prinzipien">Prinzipien</a>
+        <a href="/#vorteile">Vorteile</a>
+        <a href="/#ablauf">Ablauf</a>
+        <a href="/#ueber">Über uns</a>
+        <a href="/#faq">FAQ</a>
+        <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="nav-portal">Kundenportal</a>
+        <a href="#kontakt-cta" class="nav-cta">Kontakt</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" hidden>
+      <a href="/#leistungen">Leistungen</a>
+      <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung Frankfurt</a>
+      <a href="/mietverwaltung-frankfurt">Mietverwaltung Frankfurt</a>
+      <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>
+      <a href="/#prinzipien">Prinzipien</a>
+      <a href="/#vorteile">Vorteile</a>
+      <a href="/#ablauf">Ablauf</a>
+      <a href="/#ueber">Über uns</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="mobile-nav-portal">Kundenportal</a>
+      <a href="#kontakt-cta">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ==================================================================
+         HERO  ·  klare Aussage, Vertrauen, CTA (auch Ads-Landingpage)
+         ================================================================== -->
+    <section class="hero" id="start">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="section-kicker reveal" data-delay="1">WEG-Verwaltung · Frankfurt-${d.ort}</p>
+          <h1 class="hero-title hero-title-long reveal" data-delay="1">
+            WEG-Verwaltung<br />in ${h1Ort}.
+          </h1>
+          <p class="hero-lead reveal" data-delay="2">
+            ${d.heroLead}
+          </p>
+          <p class="hero-lead-support reveal" data-delay="2">
+            ${d.heroSupport} Zertifizierter Verwalter nach § 26a WEG, Erlaubnis nach § 34c GewO, fester Ansprechpartner und alle Unterlagen jederzeit im digitalen Eigentümerportal.
+          </p>
+          <div class="hero-actions reveal" data-delay="3">
+            <a href="#kontakt-cta" class="btn btn-primary">Kostenloses Erstgespräch</a>
+            <a href="tel:+496986007411" class="btn btn-ghost">069 8600 7411</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" data-delay="2" aria-hidden="true">
+          <div class="facade">
+            <span class="win on"></span><span class="win"></span><span class="win"></span><span class="win on"></span>
+            <span class="win"></span><span class="win on clay"></span><span class="win"></span><span class="win"></span>
+            <span class="win"></span><span class="win"></span><span class="win on"></span><span class="win"></span>
+            <span class="win on"></span><span class="win"></span><span class="win"></span><span class="win on"></span>
+            <span class="win"></span><span class="win on"></span><span class="win"></span><span class="win"></span>
+          </div>
+          <div class="facade-tag">
+            <span class="tag-num">${d.tagNum}</span>
+            <span class="tag-label">${d.tagLabel}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         BAUBESTAND  ·  inhaltlicher Eigenwert dieser Seite
+         ================================================================== -->
+    <section class="section" id="bestand">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">${d.s1Kicker}</p>
+          <h2 class="section-title">${d.s1Title}</h2>
+          <p class="section-intro">
+            ${d.s1P1}
+          </p>
+          <p class="section-intro">
+            ${d.s1P2}
+          </p>
+        </div>
+
+        <ul class="advantage-list">
+${bullets(d.s1Bullets)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         ${d.s2Kicker.toUpperCase()}  ·  zweiter Eigenwert
+         ================================================================== -->
+    <section class="section leistungen" id="schwerpunkt">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">${d.s2Kicker}</p>
+          <h2 class="section-title">${d.s2Title}</h2>
+          <p class="section-intro">
+            ${d.s2Intro}
+          </p>
+        </div>
+
+        <div class="cards">
+${cards(d.s2Cards)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         KOSTEN  ·  ehrlich eingeordnet
+         ================================================================== -->
+    <section class="section" id="kosten-${d.slug}">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Kosten</p>
+          <h2 class="section-title">Was es kostet –<br />und wovon es abhängt.</h2>
+          <p class="section-intro">
+            Das Honorar bemisst sich <strong>je Einheit und Monat</strong>. Einen Festpreis für alle gibt es bei uns nicht, weil es ihn ehrlicherweise nicht geben kann: Zwei Häuser mit gleicher Einheitenzahl können sehr unterschiedlichen Aufwand bedeuten.
+          </p>
+          <p class="section-intro">
+            Maßgeblich sind vor allem die Zahl der Einheiten, der Zustand des Gebäudes und der tatsächliche Betreuungsaufwand. ${d.kostenSatz} Was genau in den Betrag einfließt, steht unter <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>.
+          </p>
+          <div class="hero-actions">
+            <a href="#kontakt-cta" class="btn btn-primary">Angebot für Ihre WEG anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         WECHSEL  ·  Hauptintention in diesem Stadtteil
+         ================================================================== -->
+    <section class="section advantages" id="wechsel-${d.slug}">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Verwalterwechsel</p>
+          <h2 class="section-title">Unzufrieden mit der<br />bisherigen Verwaltung?</h2>
+          <p class="section-intro">
+            Die Gründe ähneln sich über alle Stadtteile hinweg: Niemand geht ans Telefon, die Abrechnung kommt spät und ist nicht nachvollziehbar, Beschlüsse werden nicht umgesetzt, Handwerker nicht koordiniert. ${d.wechselSatz}
+          </p>
+          <p class="section-intro">
+            Der Wechsel läuft geordnet ab: Bestellung des neuen Verwalters und Beschluss über den Verwaltervertrag in der Eigentümerversammlung, anschließend Übergabe von Unterlagen, Konten, Verträgen und offenen Vorgängen. Ablauf, Unterlagen und Fristen stehen auf der Seite <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>; welche Rolle der Beirat dabei spielt, erklären wir unter <a href="/verwaltungsbeirat-weg">Verwaltungsbeirat der WEG</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         LEISTUNGEN KOMPAKT
+         ================================================================== -->
+    <section class="section" id="leistungen-${d.slug}">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Leistungen</p>
+          <h2 class="section-title">Was wir für Ihre<br />Gemeinschaft übernehmen.</h2>
+          <p class="section-intro">
+            Wir übernehmen die Verwaltung Ihrer Gemeinschaft vollständig – kaufmännisch und technisch. Vom Wirtschaftsplan über die Buchhaltung bis zur Jahresabrechnung, einschließlich Erhaltungsrücklage, Eigentümerversammlung und Umsetzung der Beschlüsse. ${d.leistungenSatz} Ausführlich beschrieben ist das auf der Seite zur <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung in Frankfurt am Main</a>.
+          </p>
+          <p class="section-intro">
+            Wovon das Honorar abhängt, steht unter
+            <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>. Was in der
+            Jahresabrechnung stehen muss, erklären wir unter
+            <a href="/weg-jahresabrechnung">Jahresabrechnung der WEG</a>.
+            In der Nachbarschaft finden Sie
+            ${nachbarLinks(d.nachbarn)}. Eine Übersicht aller Stadtteile steht auf der
+            <a href="/weg-verwaltung-frankfurt#stadtteile">Seite zur WEG-Verwaltung in Frankfurt</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FAQ  ·  eigenstaendig, ${d.ort}-spezifisch
+         ================================================================== -->
+    <section class="section faq" id="faq-${d.slug}">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Häufige Fragen</p>
+          <h2 class="section-title">WEG-Verwaltung in ${d.ort} –<br />häufige Fragen.</h2>
+        </div>
+
+        <div class="faq-list">
+${faqHtml(d.faq)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         KONTAKT-CTA
+         ================================================================== -->
+    <section class="section contact" id="kontakt-cta">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <p class="section-kicker light">Kontakt</p>
+          <h2 class="section-title light">Ihre WEG in ${d.ort} –<br />sprechen wir darüber.</h2>
+          <p class="contact-intro">
+            Ein kurzes Erstgespräch kostet nichts und verpflichtet zu nichts. Danach wissen
+            Sie, ob die Zusammenarbeit passt – und wir, was Ihre Gemeinschaft braucht.
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <span class="c-label">Telefon</span>
+              <a href="tel:+496986007411">069 8600 7411</a>
+            </li>
+            <li>
+              <span class="c-label">E-Mail</span>
+              <a href="mailto:info@klarekante-hausverwaltung.de">info@klarekante-hausverwaltung.de</a>
+            </li>
+            <li>
+              <span class="c-label">Adresse</span>
+              <span>Rhönstraße 121<br />60385 Frankfurt am Main</span>
+            </li>
+            <li>
+              <span class="c-label">Erreichbar</span>
+              <span>Mo–Fr 09:00–17:00 Uhr</span>
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="/weg-verwaltung-frankfurt" class="btn btn-ghost">WEG-Verwaltung Frankfurt</a>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             KONTAKTFORMULAR
+             Versand über Web3Forms (api.web3forms.com) – siehe script.js.
+             Die Feldnamen (name-Attribute) erscheinen so in der
+             Anfrage-E-Mail. Pflichtfelder sind zusätzlich zur nativen
+             HTML-Validierung in script.js abgesichert (feldbezogene
+             Fehlermeldungen, Fokussprung).
+             ============================================================== -->
+        <form class="contact-form reveal" id="kontaktformular" novalidate>
+          <input type="hidden" name="access_key" value="e74979e2-07bd-44d9-beed-bf163b020360" />
+          <input type="hidden" name="subject" value="Neue Anfrage: WEG-Verwaltung Frankfurt-${d.ort}" />
+          <input type="hidden" name="kanal" value="Anzeigen-Zielseite WEG-Verwaltung Frankfurt-${d.ort}" />
+          <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Steuert, welche Felder unten eingeblendet werden (siehe script.js).
+               Ausgeblendete Felder werden zusaetzlich disabled und landen
+               dadurch nicht in der Anfrage-E-Mail. -->
+          <div class="field">
+            <label for="leistungsart">Gewünschte Leistung <span class="req" aria-hidden="true">*</span></label>
+            <select id="leistungsart" name="leistungsart" required aria-required="true">
+              <option value="" disabled>Bitte wählen</option>
+              <option value="WEG-Verwaltung" selected>WEG-Verwaltung (Eigentümergemeinschaft)</option>
+              <option value="Mietverwaltung Mehrfamilienhaus">Mietverwaltung – ganzes Mehrfamilienhaus</option>
+              <option value="Verwaltung einzelner Eigentumswohnungen">Verwaltung einzelner Eigentumswohnungen</option>
+              <option value="Noch unklar">Noch unklar – bitte beraten Sie mich</option>
+            </select>
+            <span class="field-error" id="err-leistungsart" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" placeholder="Ihr Name" />
+            <span class="field-error" id="err-name" hidden></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="ihre@email.de" />
+              <span class="field-error" id="err-email" hidden></span>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span class="field-opt">(optional)</span></label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Für einen Rückruf" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="plz">PLZ oder Stadtteil der Immobilie <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="plz" name="plz_stadtteil" required aria-required="true" placeholder="z. B. Ihre PLZ oder ${d.ort}" />
+              <span class="field-error" id="err-plz" hidden></span>
+            </div>
+            <div class="field">
+              <label for="einheiten">Anzahl der <span id="label-einheiten">Einheiten</span> <span class="req" aria-hidden="true">*</span></label>
+              <select id="einheiten" name="anzahl_einheiten" required aria-required="true">
+                <option value="" selected disabled>Bitte wählen</option>
+                <option value="1–10">1–10</option>
+                <option value="11–25">11–25</option>
+                <option value="26–50">26–50</option>
+                <option value="über 50">über 50</option>
+              </select>
+              <span class="field-error" id="err-einheiten" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-fuer="WEG-Verwaltung Verwaltung einzelner Eigentumswohnungen Noch unklar">
+              <label for="status">Aktueller Verwaltungsstatus <span class="field-opt">(optional)</span></label>
+              <select id="status" name="verwaltungsstatus">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Verwalterwechsel geplant">Verwalterwechsel geplant</option>
+                <option value="Verwalter gekündigt">Verwalter gekündigt</option>
+                <option value="Neubau / Erstbestellung">Neubau / Erstbestellung</option>
+                <option value="Erste Orientierung">Erste Orientierung</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zeitpunkt">Gewünschter Übernahmezeitpunkt <span class="field-opt">(optional)</span></label>
+              <select id="zeitpunkt" name="uebernahmezeitpunkt">
+                <option value="" selected>Bitte wählen</option>
+                <option value="So bald wie möglich">So bald wie möglich</option>
+                <option value="In den nächsten 3 Monaten">In den nächsten 3 Monaten</option>
+                <option value="In 3–6 Monaten">In 3–6 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <div class="field">
+              <label for="eigentuemer">Eigentümerstruktur <span class="field-opt">(optional)</span></label>
+              <select id="eigentuemer" name="eigentuemerstruktur">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Einzelner Eigentümer">Einzelner Eigentümer</option>
+                <option value="Eigentümerfamilie / Erbengemeinschaft">Eigentümerfamilie / Erbengemeinschaft</option>
+                <option value="Gesellschaft (z. B. GbR, GmbH)">Gesellschaft (z. B. GbR, GmbH)</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="leerstand">Aktueller Leerstand <span class="field-opt">(optional)</span></label>
+              <select id="leerstand" name="leerstand">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Kein Leerstand">Kein Leerstand</option>
+                <option value="1 Wohnung">1 Wohnung</option>
+                <option value="2–3 Wohnungen">2–3 Wohnungen</option>
+                <option value="Mehr als 3 Wohnungen">Mehr als 3 Wohnungen</option>
+                <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <label for="mieterwechsel">Steht ein Mieterwechsel an? <span class="field-opt">(optional)</span></label>
+            <select id="mieterwechsel" name="mieterwechsel">
+              <option value="" selected>Bitte wählen</option>
+              <option value="Ja, kurzfristig">Ja, kurzfristig</option>
+              <option value="Ja, im Lauf des Jahres">Ja, im Lauf des Jahres</option>
+              <option value="Derzeit nicht absehbar">Derzeit nicht absehbar</option>
+              <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nachricht">Nachricht <span class="field-opt">(optional)</span></label>
+            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Optional: Beschreiben Sie kurz Ihr Anliegen – z. B. Lage der Immobilie, aktuelle Situation und was Sie sich von uns wünschen."></textarea>
+          </div>
+
+          <p class="form-required-hint"><span class="req" aria-hidden="true">*</span> Pflichtfeld</p>
+
+          <button type="submit" class="btn btn-primary btn-block">Unverbindliches Erstgespräch anfragen</button>
+
+          <p class="form-privacy-note">
+            Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+            Weitere Informationen finden Sie in unserer
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </p>
+
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-logo-plate">
+          <img class="brand-logo footer-logo" src="/brand/logo-wordmark-black.svg" alt="" width="222" height="64" loading="lazy" />
+        </span>
+        <p class="footer-claim">Keine Ausreden. Keine leeren Versprechen. Klare Kommunikation. Klare Entscheidungen. Klare Ergebnisse.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer-Navigation">
+        <a href="/">Hausverwaltung Frankfurt</a>
+        <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung Frankfurt</a>
+        <a href="/mietverwaltung-frankfurt">Mietverwaltung Frankfurt</a>
+        <a href="/weg-verwaltung-frankfurt#stadtteile">Alle Stadtteile</a>
+        <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>
+        <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>
+        <a href="/verwaltungsbeirat-weg">Verwaltungsbeirat der WEG</a>
+        <a href="/weg-jahresabrechnung">Jahresabrechnung der WEG</a>
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/#ueber">Über uns</a>
+        <a href="#kontakt-cta">Kontakt</a>
+      </nav>
+
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+        <a href="support/">Support</a>
+        <a href="#" data-consent-open>Cookie-Einstellungen</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="jahr">2026</span> Klare Kante Hausverwaltung · Nico Springhetti</p>
+    </div>
+  </footer>
+
+  <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Einwilligung zur Werbemessung" hidden>
+    <p>
+      Wir möchten messen, ob Anfragen über unsere Google-Anzeigen zustande kommen. Dafür setzt
+      Google Cookies. Das geschieht nur mit Ihrer Einwilligung, die Sie jederzeit widerrufen
+      können. <a href="/datenschutz#google-ads">Details in der Datenschutzerklärung</a>
+    </p>
+    <div class="consent-actions">
+      <button type="button" id="consent-decline" class="btn btn-ghost">Ablehnen</button>
+      <button type="button" id="consent-accept" class="btn btn-ghost">Akzeptieren</button>
+    </div>
+  </div>
+  <script src="consent.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+`;
+}
+
+module.exports = { render, BASE };
