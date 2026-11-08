@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====================================================================
+       SEO / META  ·  Stadtteilseite Gallus
+       Rollenverteilung: Diese Seite traegt „WEG-Verwaltung Frankfurt-Gallus“,
+       „WEG-Verwalter Gallus“ und „Hausverwaltung Gallus“.
+       Die fachliche Tiefe liegt auf /weg-verwaltung-frankfurt, die breiten
+       Ortsbegriffe auf der Startseite. Inhaltlicher Eigenwert dieser Seite:
+       junge Neubaugemeinschaften im Europaviertel und ihre ersten Jahre.
+       Bewusst KEINE Kopie der Frankfurt- oder einer anderen Stadtteilseite.
+       Erzeugt aus tools/stadtteil-daten.cjs – Aenderungen dort vornehmen.
+       ==================================================================== -->
+  <title>WEG-Verwaltung Frankfurt-Gallus | Klare Kante</title>
+  <meta name="description" content="WEG-Verwaltung im Frankfurter Gallus: zertifizierter WEG-Verwalter (§ 26a WEG) – Neubau im Europaviertel, Gewährleistung und Erstbestellung." />
+  <link rel="canonical" href="https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#2e2a63" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="WEG-Verwaltung Frankfurt-Gallus | Klare Kante" />
+  <meta property="og:description" content="WEG-Verwaltung im Frankfurter Gallus: zertifizierter WEG-Verwalter (§ 26a WEG) – Neubau im Europaviertel, Gewährleistung und Erstbestellung." />
+  <meta property="og:image" content="https://klarekante-hausverwaltung.de/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung Frankfurt-Gallus" />
+  <meta property="og:url" content="https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus" />
+  <meta property="og:site_name" content="Klare Kante Hausverwaltung" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WEG-Verwaltung Frankfurt-Gallus | Klare Kante" />
+  <meta name="twitter:description" content="WEG-Verwaltung im Frankfurter Gallus: zertifizierter WEG-Verwalter (§ 26a WEG) – Neubau im Europaviertel, Gewährleistung und Erstbestellung." />
+  <meta name="twitter:image" content="https://klarekante-hausverwaltung.de/og-image.png" />
+  <meta name="twitter:image:alt" content="Klare Kante Hausverwaltung – WEG-Verwaltung Frankfurt-Gallus" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <script>document.documentElement.classList.add("js");</script>
+
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Strukturierte Daten: Breadcrumb + Service + WebPage/FAQPage.
+       Der Betrieb (#business) ist auf der Startseite definiert und wird hier
+       nur per @id referenziert. Alle FAQ-Antworten stehen sichtbar auf der
+       Seite. Keine erfundenen Angaben. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://klarekante-hausverwaltung.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "WEG-Verwaltung Frankfurt",
+            "item": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Gallus",
+            "item": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus#service",
+        "name": "WEG-Verwaltung Frankfurt-Gallus",
+        "serviceType": "WEG-Verwaltung (Wohnungseigentumsverwaltung)",
+        "provider": {
+          "@id": "https://klarekante-hausverwaltung.de/#business"
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Frankfurt-Gallus",
+          "containedInPlace": {
+            "@type": "City",
+            "name": "Frankfurt am Main"
+          }
+        },
+        "description": "WEG-Verwaltung für Wohnungseigentümergemeinschaften in Frankfurt-Gallus – mit festem Ansprechpartner, klaren Abläufen und digitalem Eigentümerportal."
+      },
+      {
+        "@type": [
+          "WebPage",
+          "FAQPage"
+        ],
+        "@id": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus#webpage",
+        "url": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus",
+        "name": "WEG-Verwaltung Frankfurt-Gallus | Klare Kante",
+        "description": "WEG-Verwaltung im Frankfurter Gallus: zertifizierter WEG-Verwalter (§ 26a WEG) – Neubau im Europaviertel, Gewährleistung und Erstbestellung.",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "https://klarekante-hausverwaltung.de/#website"
+        },
+        "about": {
+          "@id": "https://klarekante-hausverwaltung.de/#business"
+        },
+        "mainContentOfPage": {
+          "@id": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus#service"
+        },
+        "breadcrumb": {
+          "@id": "https://klarekante-hausverwaltung.de/weg-verwaltung-frankfurt-gallus#breadcrumb"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Sind Sie als WEG-Verwalter im Gallus tätig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Unser Büro liegt in der Rhönstraße im Ostend; das Gallus und das Europaviertel betreuen wir als Teil des westlichen Frankfurts. Objektbegehungen, Handwerkertermine und Eigentümerversammlungen in Präsenz sind selbstverständlich möglich."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Unsere Anlage ist neu und der Bauträger stellt den Verwalter. Können wir wechseln?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Die Erstbestellung ist zeitlich begrenzt; danach entscheidet die Gemeinschaft in der Eigentümerversammlung selbst, wen sie bestellt. Wichtig ist, dass bei der Übergabe die Unterlagen aus der Bauphase vollständig mitkommen: Abnahmeprotokolle, Mängellisten, Pläne, Revisionsunterlagen und Wartungsverträge. Fehlt davon etwas, benennen wir es schriftlich, statt es stillschweigend hinzunehmen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn Mängel erst nach Ablauf der Gewährleistung auffallen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dann trägt die Gemeinschaft die Kosten in der Regel selbst. Genau deshalb ist die Fristenkontrolle in den ersten Jahren die wichtigste Aufgabe. Wir führen die Mängel mit Meldedatum und Stand, halten die Fristen nach und sagen rechtzeitig, wenn vor Fristablauf eine Entscheidung der Gemeinschaft nötig ist."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft ein Verwalterwechsel für eine WEG im Gallus ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Der Wechsel wird in der Eigentümerversammlung beschlossen: Die Gemeinschaft bestellt den neuen Verwalter und beschließt den Verwaltervertrag. Danach folgt die Übergabe von Unterlagen, Konten, Verträgen und laufenden Vorgängen. Bei Neubauanlagen achten wir besonders darauf, dass die Unterlagen aus der Bauphase vollständig übergeben werden."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <script src="/analytics.js"></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="Klare Kante Hausverwaltung – Startseite">
+        <span class="brand-logo-plate">
+          <img class="brand-logo" src="/brand/logo-wordmark-black.svg" alt="Klare Kante Hausverwaltung" width="257" height="74" fetchpriority="high" />
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung</a>
+        <a href="/mietverwaltung-frankfurt">Mietverwaltung</a>
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/#prinzipien">Prinzipien</a>
+        <a href="/#vorteile">Vorteile</a>
+        <a href="/#ablauf">Ablauf</a>
+        <a href="/#ueber">Über uns</a>
+        <a href="/#faq">FAQ</a>
+        <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="nav-portal">Kundenportal</a>
+        <a href="#kontakt-cta" class="nav-cta">Kontakt</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" hidden>
+      <a href="/#leistungen">Leistungen</a>
+      <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung Frankfurt</a>
+      <a href="/mietverwaltung-frankfurt">Mietverwaltung Frankfurt</a>
+      <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>
+      <a href="/#prinzipien">Prinzipien</a>
+      <a href="/#vorteile">Vorteile</a>
+      <a href="/#ablauf">Ablauf</a>
+      <a href="/#ueber">Über uns</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://portal.klarekante-hausverwaltung.de" target="_blank" rel="noopener noreferrer" class="mobile-nav-portal">Kundenportal</a>
+      <a href="#kontakt-cta">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ==================================================================
+         HERO  ·  klare Aussage, Vertrauen, CTA (auch Ads-Landingpage)
+         ================================================================== -->
+    <section class="hero" id="start">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="section-kicker reveal" data-delay="1">WEG-Verwaltung · Frankfurt-Gallus</p>
+          <h1 class="hero-title hero-title-long reveal" data-delay="1">
+            WEG-Verwaltung<br />in im Frankfurter Gallus.
+          </h1>
+          <p class="hero-lead reveal" data-delay="2">
+            Kaum ein Frankfurter Stadtteil hat sich so verändert wie das Gallus. Neben dem alten Arbeiterviertel ist mit dem Europaviertel ein Quartier mit sehr vielen jungen Eigentümergemeinschaften entstanden.
+          </p>
+          <p class="hero-lead-support reveal" data-delay="2">
+            Bei einer neuen Gemeinschaft entscheiden die ersten Jahre: Abnahme des Gemeinschaftseigentums, Verfolgung der Mängel, Gewährleistungsfristen und der Wechsel vom Verwalter des Bauträgers zu einem, den die Eigentümer selbst gewählt haben. Zertifizierter Verwalter nach § 26a WEG, Erlaubnis nach § 34c GewO, fester Ansprechpartner und alle Unterlagen jederzeit im digitalen Eigentümerportal.
+          </p>
+          <div class="hero-actions reveal" data-delay="3">
+            <a href="#kontakt-cta" class="btn btn-primary">Kostenloses Erstgespräch</a>
+            <a href="tel:+496986007411" class="btn btn-ghost">069 8600 7411</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" data-delay="2" aria-hidden="true">
+          <div class="facade">
+            <span class="win on"></span><span class="win"></span><span class="win"></span><span class="win on"></span>
+            <span class="win"></span><span class="win on clay"></span><span class="win"></span><span class="win"></span>
+            <span class="win"></span><span class="win"></span><span class="win on"></span><span class="win"></span>
+            <span class="win on"></span><span class="win"></span><span class="win"></span><span class="win on"></span>
+            <span class="win"></span><span class="win on"></span><span class="win"></span><span class="win"></span>
+          </div>
+          <div class="facade-tag">
+            <span class="tag-num">Neu</span>
+            <span class="tag-label">Gemeinschaft<br />in den ersten Jahren</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         BAUBESTAND  ·  inhaltlicher Eigenwert dieser Seite
+         ================================================================== -->
+    <section class="section" id="bestand">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Baubestand</p>
+          <h2 class="section-title">Arbeiterviertel<br />und Europaviertel.</h2>
+          <p class="section-intro">
+            Das Gallus entstand als Wohnort für die Beschäftigten der Werke und Bahnanlagen: dichte Mehrfamilienhäuser aus der Zeit um 1900, dazu Siedlungsbau der Zwischenkriegszeit und Wiederaufbau der Nachkriegsjahre. Auf dem Gelände des früheren Güterbahnhofs ist seit den 2000er Jahren das Europaviertel hinzugekommen, mit Gebäuden, die es in dieser Größe im alten Gallus nicht gab.
+          </p>
+          <p class="section-intro">
+            Für die Verwaltung sind das zwei Welten. Im Altbestand geht es um Dach, Fassade, Stränge und Heizung und um Gemeinschaften, die seit Jahrzehnten bestehen. Im Europaviertel geht es um große Anlagen mit Tiefgarage und Technik, um Gewährleistungsfristen, die ablaufen, und um Eigentümer, die sich erst kennenlernen. Beides verlangt eine eigene Herangehensweise.
+          </p>
+        </div>
+
+        <ul class="advantage-list">
+          <li class="reveal"><span class="a-mark" aria-hidden="true"></span>Neubau: Abnahmeprotokolle, Mängellisten und Gewährleistungsfristen lückenlos führen.</li>
+          <li class="reveal" data-delay="1"><span class="a-mark" aria-hidden="true"></span>Technische Anlagen mit Lebensdauer und Austauschzeitpunkt im Erhaltungsplan.</li>
+          <li class="reveal" data-delay="2"><span class="a-mark" aria-hidden="true"></span>Altbestand: Dach, Fassade, Stränge, Heizung mit Zeithorizont benennen.</li>
+          <li class="reveal"><span class="a-mark" aria-hidden="true"></span>Erhaltungsrücklage nach Baujahr und realem Zustand bemessen, nicht pauschal.</li>
+          <li class="reveal" data-delay="1"><span class="a-mark" aria-hidden="true"></span>Wir koordinieren geeignete Fachbetriebe und Dienstleister.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         NEUE GEMEINSCHAFT  ·  zweiter Eigenwert
+         ================================================================== -->
+    <section class="section leistungen" id="schwerpunkt">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Neue Gemeinschaft</p>
+          <h2 class="section-title">Die ersten Jahre<br />entscheiden.</h2>
+          <p class="section-intro">
+            Eine frisch gegründete Eigentümergemeinschaft hat ein Zeitfenster, das sich nicht wiederholt. Solange die Gewährleistung läuft, kann die Gemeinschaft Mängel am Gemeinschaftseigentum auf Kosten des Bauträgers beheben lassen. Läuft die Frist ab, zahlt sie selbst. Das ist der teuerste Fehler, den eine junge WEG machen kann.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-num">01</span>
+            <h3>Mängel am Gemeinschaftseigentum</h3>
+            <p>Wir führen eine Liste, die diesen Namen verdient: was festgestellt wurde, wann es gemeldet wurde, was der Bauträger zugesagt hat und was tatsächlich erledigt ist. Ohne diese Dokumentation verliert die Gemeinschaft Ansprüche, die ihr zustehen.</p>
+          </article>
+
+          <article class="card reveal" data-delay="1">
+            <span class="card-num">02</span>
+            <h3>Fristen im Blick</h3>
+            <p>Gewährleistungsfristen laufen still ab. Wir halten die Termine nach und weisen die Gemeinschaft rechtzeitig darauf hin, wenn vor Fristablauf etwas veranlasst werden muss – inklusive der Frage, ob ein Sachverständiger hinzugezogen werden sollte.</p>
+          </article>
+
+          <article class="card reveal" data-delay="2">
+            <span class="card-num">03</span>
+            <h3>Vom Bauträger zur eigenen Wahl</h3>
+            <p>Der erste Verwalter wird in der Regel vom Bauträger eingesetzt. Danach entscheidet die Gemeinschaft selbst. Wir erklären, welche Unterlagen bei diesem Wechsel vollständig übergeben werden müssen, damit die Gemeinschaft nicht ohne Abnahmeprotokolle dasteht.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         KOSTEN  ·  ehrlich eingeordnet
+         ================================================================== -->
+    <section class="section" id="kosten-gallus">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Kosten</p>
+          <h2 class="section-title">Was es kostet –<br />und wovon es abhängt.</h2>
+          <p class="section-intro">
+            Das Honorar bemisst sich <strong>je Einheit und Monat</strong>. Einen Festpreis für alle gibt es bei uns nicht, weil es ihn ehrlicherweise nicht geben kann: Zwei Häuser mit gleicher Einheitenzahl können sehr unterschiedlichen Aufwand bedeuten.
+          </p>
+          <p class="section-intro">
+            Maßgeblich sind vor allem die Zahl der Einheiten, der Zustand des Gebäudes und der tatsächliche Betreuungsaufwand. Große Anlagen mit vielen Einheiten senken den Betrag je Einheit, erhöhen aber den Koordinationsaufwand – in der Gründungsphase zusätzlich durch die Mängelverfolgung. Was genau in den Betrag einfließt, steht unter <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>.
+          </p>
+          <div class="hero-actions">
+            <a href="#kontakt-cta" class="btn btn-primary">Angebot für Ihre WEG anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         WECHSEL  ·  Hauptintention in diesem Stadtteil
+         ================================================================== -->
+    <section class="section advantages" id="wechsel-gallus">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Verwalterwechsel</p>
+          <h2 class="section-title">Unzufrieden mit der<br />bisherigen Verwaltung?</h2>
+          <p class="section-intro">
+            Die Gründe ähneln sich über alle Stadtteile hinweg: Niemand geht ans Telefon, die Abrechnung kommt spät und ist nicht nachvollziehbar, Beschlüsse werden nicht umgesetzt, Handwerker nicht koordiniert. Im Europaviertel ist der häufigste Anlass ein anderer: Die Gemeinschaft möchte nach der Bauträgerphase einen Verwalter, den sie selbst gewählt hat.
+          </p>
+          <p class="section-intro">
+            Der Wechsel läuft geordnet ab: Bestellung des neuen Verwalters und Beschluss über den Verwaltervertrag in der Eigentümerversammlung, anschließend Übergabe von Unterlagen, Konten, Verträgen und offenen Vorgängen. Ablauf, Unterlagen und Fristen stehen auf der Seite <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>; welche Rolle der Beirat dabei spielt, erklären wir unter <a href="/verwaltungsbeirat-weg">Verwaltungsbeirat der WEG</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         LEISTUNGEN KOMPAKT
+         ================================================================== -->
+    <section class="section" id="leistungen-gallus">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Leistungen</p>
+          <h2 class="section-title">Was wir für Ihre<br />Gemeinschaft übernehmen.</h2>
+          <p class="section-intro">
+            Wir übernehmen die Verwaltung Ihrer Gemeinschaft vollständig – kaufmännisch und technisch. Vom Wirtschaftsplan über die Buchhaltung bis zur Jahresabrechnung, einschließlich Erhaltungsrücklage, Eigentümerversammlung und Umsetzung der Beschlüsse. Bei jungen Gemeinschaften gehören Mängelverfolgung, Fristenkontrolle und die Abstimmung mit dem Bauträger zur laufenden Arbeit dazu. Ausführlich beschrieben ist das auf der Seite zur <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung in Frankfurt am Main</a>.
+          </p>
+          <p class="section-intro">
+            Wovon das Honorar abhängt, steht unter
+            <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>. Was in der
+            Jahresabrechnung stehen muss, erklären wir unter
+            <a href="/weg-jahresabrechnung">Jahresabrechnung der WEG</a>.
+            In der Nachbarschaft finden Sie
+            <a href="/weg-verwaltung-frankfurt-bockenheim">WEG-Verwaltung in Bockenheim</a>,
+            <a href="/weg-verwaltung-frankfurt-gutleutviertel">WEG-Verwaltung im Gutleutviertel</a> und
+            <a href="/weg-verwaltung-frankfurt-griesheim">WEG-Verwaltung in Griesheim</a>. Eine Übersicht aller Stadtteile steht auf der
+            <a href="/weg-verwaltung-frankfurt#stadtteile">Seite zur WEG-Verwaltung in Frankfurt</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FAQ  ·  eigenstaendig, Gallus-spezifisch
+         ================================================================== -->
+    <section class="section faq" id="faq-gallus">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Häufige Fragen</p>
+          <h2 class="section-title">WEG-Verwaltung in Gallus –<br />häufige Fragen.</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Sind Sie als WEG-Verwalter im Gallus tätig?</summary>
+            <p>
+              Ja. Unser Büro liegt in der Rhönstraße im Ostend; das Gallus und das Europaviertel betreuen wir als Teil des westlichen Frankfurts. Objektbegehungen, Handwerkertermine und Eigentümerversammlungen in Präsenz sind selbstverständlich möglich.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Unsere Anlage ist neu und der Bauträger stellt den Verwalter. Können wir wechseln?</summary>
+            <p>
+              Ja. Die Erstbestellung ist zeitlich begrenzt; danach entscheidet die Gemeinschaft in der Eigentümerversammlung selbst, wen sie bestellt. Wichtig ist, dass bei der Übergabe die Unterlagen aus der Bauphase vollständig mitkommen: Abnahmeprotokolle, Mängellisten, Pläne, Revisionsunterlagen und Wartungsverträge. Fehlt davon etwas, benennen wir es schriftlich, statt es stillschweigend hinzunehmen.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Was passiert, wenn Mängel erst nach Ablauf der Gewährleistung auffallen?</summary>
+            <p>
+              Dann trägt die Gemeinschaft die Kosten in der Regel selbst. Genau deshalb ist die Fristenkontrolle in den ersten Jahren die wichtigste Aufgabe. Wir führen die Mängel mit Meldedatum und Stand, halten die Fristen nach und sagen rechtzeitig, wenn vor Fristablauf eine Entscheidung der Gemeinschaft nötig ist.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Wie läuft ein Verwalterwechsel für eine WEG im Gallus ab?</summary>
+            <p>
+              Der Wechsel wird in der Eigentümerversammlung beschlossen: Die Gemeinschaft bestellt den neuen Verwalter und beschließt den Verwaltervertrag. Danach folgt die Übergabe von Unterlagen, Konten, Verträgen und laufenden Vorgängen. Bei Neubauanlagen achten wir besonders darauf, dass die Unterlagen aus der Bauphase vollständig übergeben werden.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         KONTAKT-CTA
+         ================================================================== -->
+    <section class="section contact" id="kontakt-cta">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <p class="section-kicker light">Kontakt</p>
+          <h2 class="section-title light">Ihre WEG in Gallus –<br />sprechen wir darüber.</h2>
+          <p class="contact-intro">
+            Ein kurzes Erstgespräch kostet nichts und verpflichtet zu nichts. Danach wissen
+            Sie, ob die Zusammenarbeit passt – und wir, was Ihre Gemeinschaft braucht.
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <span class="c-label">Telefon</span>
+              <a href="tel:+496986007411">069 8600 7411</a>
+            </li>
+            <li>
+              <span class="c-label">E-Mail</span>
+              <a href="mailto:info@klarekante-hausverwaltung.de">info@klarekante-hausverwaltung.de</a>
+            </li>
+            <li>
+              <span class="c-label">Adresse</span>
+              <span>Rhönstraße 121<br />60385 Frankfurt am Main</span>
+            </li>
+            <li>
+              <span class="c-label">Erreichbar</span>
+              <span>Mo–Fr 09:00–17:00 Uhr</span>
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="/weg-verwaltung-frankfurt" class="btn btn-ghost">WEG-Verwaltung Frankfurt</a>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             KONTAKTFORMULAR
+             Versand über Web3Forms (api.web3forms.com) – siehe script.js.
+             Die Feldnamen (name-Attribute) erscheinen so in der
+             Anfrage-E-Mail. Pflichtfelder sind zusätzlich zur nativen
+             HTML-Validierung in script.js abgesichert (feldbezogene
+             Fehlermeldungen, Fokussprung).
+             ============================================================== -->
+        <form class="contact-form reveal" id="kontaktformular" novalidate>
+          <input type="hidden" name="access_key" value="e74979e2-07bd-44d9-beed-bf163b020360" />
+          <input type="hidden" name="subject" value="Neue Anfrage: WEG-Verwaltung Frankfurt-Gallus" />
+          <input type="hidden" name="kanal" value="Anzeigen-Zielseite WEG-Verwaltung Frankfurt-Gallus" />
+          <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Steuert, welche Felder unten eingeblendet werden (siehe script.js).
+               Ausgeblendete Felder werden zusaetzlich disabled und landen
+               dadurch nicht in der Anfrage-E-Mail. -->
+          <div class="field">
+            <label for="leistungsart">Gewünschte Leistung <span class="req" aria-hidden="true">*</span></label>
+            <select id="leistungsart" name="leistungsart" required aria-required="true">
+              <option value="" disabled>Bitte wählen</option>
+              <option value="WEG-Verwaltung" selected>WEG-Verwaltung (Eigentümergemeinschaft)</option>
+              <option value="Mietverwaltung Mehrfamilienhaus">Mietverwaltung – ganzes Mehrfamilienhaus</option>
+              <option value="Verwaltung einzelner Eigentumswohnungen">Verwaltung einzelner Eigentumswohnungen</option>
+              <option value="Noch unklar">Noch unklar – bitte beraten Sie mich</option>
+            </select>
+            <span class="field-error" id="err-leistungsart" hidden></span>
+          </div>
+
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" placeholder="Ihr Name" />
+            <span class="field-error" id="err-name" hidden></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="ihre@email.de" />
+              <span class="field-error" id="err-email" hidden></span>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span class="field-opt">(optional)</span></label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Für einen Rückruf" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="plz">PLZ oder Stadtteil der Immobilie <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="plz" name="plz_stadtteil" required aria-required="true" placeholder="z. B. Ihre PLZ oder Gallus" />
+              <span class="field-error" id="err-plz" hidden></span>
+            </div>
+            <div class="field">
+              <label for="einheiten">Anzahl der <span id="label-einheiten">Einheiten</span> <span class="req" aria-hidden="true">*</span></label>
+              <select id="einheiten" name="anzahl_einheiten" required aria-required="true">
+                <option value="" selected disabled>Bitte wählen</option>
+                <option value="1–10">1–10</option>
+                <option value="11–25">11–25</option>
+                <option value="26–50">26–50</option>
+                <option value="über 50">über 50</option>
+              </select>
+              <span class="field-error" id="err-einheiten" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-fuer="WEG-Verwaltung Verwaltung einzelner Eigentumswohnungen Noch unklar">
+              <label for="status">Aktueller Verwaltungsstatus <span class="field-opt">(optional)</span></label>
+              <select id="status" name="verwaltungsstatus">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Verwalterwechsel geplant">Verwalterwechsel geplant</option>
+                <option value="Verwalter gekündigt">Verwalter gekündigt</option>
+                <option value="Neubau / Erstbestellung">Neubau / Erstbestellung</option>
+                <option value="Erste Orientierung">Erste Orientierung</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zeitpunkt">Gewünschter Übernahmezeitpunkt <span class="field-opt">(optional)</span></label>
+              <select id="zeitpunkt" name="uebernahmezeitpunkt">
+                <option value="" selected>Bitte wählen</option>
+                <option value="So bald wie möglich">So bald wie möglich</option>
+                <option value="In den nächsten 3 Monaten">In den nächsten 3 Monaten</option>
+                <option value="In 3–6 Monaten">In 3–6 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <div class="field">
+              <label for="eigentuemer">Eigentümerstruktur <span class="field-opt">(optional)</span></label>
+              <select id="eigentuemer" name="eigentuemerstruktur">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Einzelner Eigentümer">Einzelner Eigentümer</option>
+                <option value="Eigentümerfamilie / Erbengemeinschaft">Eigentümerfamilie / Erbengemeinschaft</option>
+                <option value="Gesellschaft (z. B. GbR, GmbH)">Gesellschaft (z. B. GbR, GmbH)</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="leerstand">Aktueller Leerstand <span class="field-opt">(optional)</span></label>
+              <select id="leerstand" name="leerstand">
+                <option value="" selected>Bitte wählen</option>
+                <option value="Kein Leerstand">Kein Leerstand</option>
+                <option value="1 Wohnung">1 Wohnung</option>
+                <option value="2–3 Wohnungen">2–3 Wohnungen</option>
+                <option value="Mehr als 3 Wohnungen">Mehr als 3 Wohnungen</option>
+                <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" data-fuer="Mietverwaltung Mehrfamilienhaus Verwaltung einzelner Eigentumswohnungen">
+            <label for="mieterwechsel">Steht ein Mieterwechsel an? <span class="field-opt">(optional)</span></label>
+            <select id="mieterwechsel" name="mieterwechsel">
+              <option value="" selected>Bitte wählen</option>
+              <option value="Ja, kurzfristig">Ja, kurzfristig</option>
+              <option value="Ja, im Lauf des Jahres">Ja, im Lauf des Jahres</option>
+              <option value="Derzeit nicht absehbar">Derzeit nicht absehbar</option>
+              <option value="Weiß ich nicht genau">Weiß ich nicht genau</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nachricht">Nachricht <span class="field-opt">(optional)</span></label>
+            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Optional: Beschreiben Sie kurz Ihr Anliegen – z. B. Lage der Immobilie, aktuelle Situation und was Sie sich von uns wünschen."></textarea>
+          </div>
+
+          <p class="form-required-hint"><span class="req" aria-hidden="true">*</span> Pflichtfeld</p>
+
+          <button type="submit" class="btn btn-primary btn-block">Unverbindliches Erstgespräch anfragen</button>
+
+          <p class="form-privacy-note">
+            Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+            Weitere Informationen finden Sie in unserer
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </p>
+
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-logo-plate">
+          <img class="brand-logo footer-logo" src="/brand/logo-wordmark-black.svg" alt="" width="222" height="64" loading="lazy" />
+        </span>
+        <p class="footer-claim">Keine Ausreden. Keine leeren Versprechen. Klare Kommunikation. Klare Entscheidungen. Klare Ergebnisse.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer-Navigation">
+        <a href="/">Hausverwaltung Frankfurt</a>
+        <a href="/weg-verwaltung-frankfurt">WEG-Verwaltung Frankfurt</a>
+        <a href="/mietverwaltung-frankfurt">Mietverwaltung Frankfurt</a>
+        <a href="/weg-verwaltung-frankfurt#stadtteile">Alle Stadtteile</a>
+        <a href="/hausverwaltung-wechseln">Hausverwaltung wechseln</a>
+        <a href="/weg-verwaltung-kosten">Kosten der WEG-Verwaltung</a>
+        <a href="/verwaltungsbeirat-weg">Verwaltungsbeirat der WEG</a>
+        <a href="/weg-jahresabrechnung">Jahresabrechnung der WEG</a>
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/#ueber">Über uns</a>
+        <a href="#kontakt-cta">Kontakt</a>
+      </nav>
+
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+        <a href="support/">Support</a>
+        <a href="#" data-consent-open>Cookie-Einstellungen</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="jahr">2026</span> Klare Kante Hausverwaltung · Nico Springhetti</p>
+    </div>
+  </footer>
+
+  <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Einwilligung zur Werbemessung" hidden>
+    <p>
+      Wir möchten messen, ob Anfragen über unsere Google-Anzeigen zustande kommen. Dafür setzt
+      Google Cookies. Das geschieht nur mit Ihrer Einwilligung, die Sie jederzeit widerrufen
+      können. <a href="/datenschutz#google-ads">Details in der Datenschutzerklärung</a>
+    </p>
+    <div class="consent-actions">
+      <button type="button" id="consent-decline" class="btn btn-ghost">Ablehnen</button>
+      <button type="button" id="consent-accept" class="btn btn-ghost">Akzeptieren</button>
+    </div>
+  </div>
+  <script src="consent.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

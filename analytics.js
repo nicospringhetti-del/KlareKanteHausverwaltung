@@ -11,7 +11,25 @@
     "/weg-verwaltung-frankfurt-bornheim", "/weg-verwaltung-frankfurt-nordend",
     "/weg-verwaltung-frankfurt-ostend", "/weg-verwaltung-frankfurt-sachsenhausen",
     "/weg-verwaltung-frankfurt-westend", "/weg-verwaltung-frankfurt-bockenheim",
-    "/weg-verwaltung-frankfurt-innenstadt", "/weg-verwaltung-frankfurt-oberrad"];
+    "/weg-verwaltung-frankfurt-innenstadt", "/weg-verwaltung-frankfurt-oberrad",
+    "/weg-verwaltung-frankfurt-altstadt", "/weg-verwaltung-frankfurt-bahnhofsviertel",
+    "/weg-verwaltung-frankfurt-gutleutviertel", "/weg-verwaltung-frankfurt-gallus",
+    "/weg-verwaltung-frankfurt-niederrad", "/weg-verwaltung-frankfurt-hoechst",
+    "/weg-verwaltung-frankfurt-nied", "/weg-verwaltung-frankfurt-sindlingen",
+    "/weg-verwaltung-frankfurt-zeilsheim", "/weg-verwaltung-frankfurt-unterliederbach",
+    "/weg-verwaltung-frankfurt-sossenheim", "/weg-verwaltung-frankfurt-schwanheim",
+    "/weg-verwaltung-frankfurt-griesheim", "/weg-verwaltung-frankfurt-roedelheim",
+    "/weg-verwaltung-frankfurt-hausen", "/weg-verwaltung-frankfurt-praunheim",
+    "/weg-verwaltung-frankfurt-heddernheim", "/weg-verwaltung-frankfurt-niederursel",
+    "/weg-verwaltung-frankfurt-ginnheim", "/weg-verwaltung-frankfurt-dornbusch",
+    "/weg-verwaltung-frankfurt-eschersheim", "/weg-verwaltung-frankfurt-eckenheim",
+    "/weg-verwaltung-frankfurt-preungesheim", "/weg-verwaltung-frankfurt-bonames",
+    "/weg-verwaltung-frankfurt-berkersheim", "/weg-verwaltung-frankfurt-frankfurter-berg",
+    "/weg-verwaltung-frankfurt-riederwald", "/weg-verwaltung-frankfurt-seckbach",
+    "/weg-verwaltung-frankfurt-fechenheim", "/weg-verwaltung-frankfurt-riedberg",
+    "/weg-verwaltung-frankfurt-kalbach", "/weg-verwaltung-frankfurt-nieder-eschbach",
+    "/weg-verwaltung-frankfurt-harheim", "/weg-verwaltung-frankfurt-nieder-erlenbach",
+    "/weg-verwaltung-frankfurt-bergen-enkheim"];
   var CHANNELS = { f: "friseur-geschaefte", b: "briefkasten", p: "persoenlich", m: "multiplikator" };
   var EVENTS = ["Telefon_Klick", "Email_Klick", "Formular_Begonnen", "Anfrage_Gesendet", "Rueckruf_Gesendet"];
 
