@@ -14,8 +14,8 @@
      nie das Label – so bleiben die Kennungen an einer Stelle. */
   var LABELS = {
     form: "EWX_CP_P8IodENzj-NhE",   /* C1 – Formular bestätigt gesendet (primär) */
-    tel:  "L2H3CIXQ8IodENzj-NhE",   /* C3 – Klick auf tel:-Link (sekundär)       */
-    mail: "PcSQCIjQ8IodENzj-NhE"    /* C4 – Klick auf mailto:-Link (sekundär)    */
+    tel:  "L2H3CIXQ8IodENzj-NhE",   /* C3 – Klick auf tel:-Link (primär)         */
+    mail: "PcSQCIjQ8IodENzj-NhE"    /* C4 – Klick auf mailto:-Link (primär)      */
   };
   /* C2 (Anzeigenanruf ab 60 s) läuft über das Anruf-Asset in der Anzeige
      und braucht kein Website-Label. */
