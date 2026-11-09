@@ -365,8 +365,9 @@
     });
   }
 
-  /* ---------- Sekundäre Conversions (nur Beobachtung) ----------
-     C3 und C4 sind Klicks, keine Gespräche. kkTrack sendet nur, wenn die
+  /* ---------- Kontaktklicks als Conversion ----------
+     C3 und C4 sind Klicks, keine Gespräche, zählen im Ads-Konto seit
+     08.11.2026 aber als primäre Aktionen. kkTrack sendet nur, wenn die
      Einwilligung vorliegt; ohne Einwilligung passiert hier nichts.
   */
   Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
