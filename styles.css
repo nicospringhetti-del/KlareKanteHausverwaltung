@@ -489,6 +489,7 @@ main:focus { outline: none; }
 .contact-list a { color: var(--paper); text-decoration: none; font-size: 1.1rem; transition: color 0.2s; }
 .contact-list a:hover { color: var(--sage-light); }
 .contact-list span { color: rgba(241,236,225,0.85); }
+.contact-list .c-note { font-size: 0.85rem; color: rgba(241,236,225,0.65); }
 
 /* Formular */
 .contact-form { background: var(--paper); color: var(--ink); padding: clamp(1.75rem, 3vw, 2.5rem); border: 1.5px solid var(--ink); box-shadow: 12px 12px 0 var(--sage); }
