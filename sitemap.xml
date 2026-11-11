@@ -3,6 +3,7 @@
   lastmod = Datum der letzten inhaltlichen Änderung der jeweiligen Seite.
   Bei jeder Inhaltsänderung mitpflegen, sonst läuft der Wert wieder aus dem
   Takt (Befund SEO-Audit 07.10.2026, Abschnitt B1/P1).
+  Enthalten ist auch /support/ (Supportadresse der App, indexierbar).
   Nicht enthalten: /impressum (indexierbar, aber ohne Suchrelevanz),
   /datenschutz und /rueckruf (beide bewusst noindex).
 -->
@@ -306,5 +307,11 @@
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://klarekante-hausverwaltung.de/support/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
